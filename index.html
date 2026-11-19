@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+  <!-- Khai báo mã tiếng Việt, cách hiển thị trên điện thoại và các thư viện giao diện dùng chung. -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DIVITO GYM - Hệ Thống Quản Lý Phòng Tập</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
+    /* Font Inter dùng cho toàn trang; quy tắc in chỉ giữ lại hóa đơn để có thể in gọn. */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     body { font-family: 'Inter', sans-serif; }
     @media print {
@@ -22,6 +24,7 @@
 
   <!-- ================= TRANG CHỦ CÔNG KHAI ================= -->
   <div id="homePage" class="min-h-screen flex flex-col bg-white">
+    <!-- Thanh điều hướng: logo, liên kết cuộn đến các mục và nút đăng nhập/đăng ký. -->
     <header class="sticky top-0 z-40 border-b border-blue-100 bg-white/95 text-slate-900 shadow-sm backdrop-blur">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
         <a href="#" class="flex items-center gap-3" aria-label="DIVITO GYM trang chủ">
@@ -50,6 +53,7 @@
     </header>
 
     <main>
+      <!-- Khối giới thiệu chính (hero): nêu thông điệp, lợi ích và lời kêu gọi đăng ký. -->
       <section class="relative isolate overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white">
         <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-500/25 via-transparent to-transparent"></div>
         <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:px-8 md:py-24 lg:gap-16 lg:py-28">
@@ -95,6 +99,7 @@
         </div>
       </section>
 
+      <!-- Ba điểm nổi bật giúp khách xem nhanh các quyền lợi cơ bản của phòng tập. -->
       <section id="gymBenefits" class="border-b border-slate-100 bg-white px-5 py-12 md:px-8">
         <div class="mx-auto grid max-w-7xl gap-4 sm:grid-cols-3">
           <article class="rounded-2xl border border-slate-100 bg-slate-50 p-5 transition hover:-translate-y-1 hover:shadow-lg">
@@ -115,6 +120,7 @@
         </div>
       </section>
 
+      <!-- Danh sách gói được JavaScript lấy từ DB và dựng vào homePackageCards. -->
       <section id="membershipPlans" class="bg-slate-50 px-5 py-16 md:px-8 md:py-20">
         <div class="mx-auto max-w-7xl">
           <div class="mx-auto mb-10 max-w-2xl text-center">
@@ -127,6 +133,7 @@
         </div>
       </section>
 
+      <!-- Bản tin/kiến thức mẫu để trang chủ có nội dung hướng dẫn và ưu đãi. -->
       <section id="gymNews" class="bg-white px-5 py-16 md:px-8 md:py-20">
         <div class="mx-auto max-w-7xl">
           <div class="mb-9 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
@@ -178,6 +185,7 @@
         </div>
       </section>
 
+      <!-- Lời kêu gọi đăng ký cuối trang; mở cùng biểu mẫu tài khoản hội viên. -->
       <section class="bg-blue-50 px-5 py-14 text-white md:px-8">
         <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 rounded-3xl border border-blue-800/30 bg-gradient-to-r from-blue-950 via-blue-900 to-slate-950 p-7 shadow-xl shadow-blue-950/15 sm:p-10 md:flex-row md:items-center">
           <div>
@@ -192,6 +200,7 @@
       </section>
     </main>
 
+    <!-- Chân trang chứa nhận diện thương hiệu và thông tin bản quyền hiển thị. -->
     <footer class="mt-auto bg-blue-950 px-5 py-7 text-center text-xs text-blue-100 md:px-8">
       <p class="font-bold tracking-wider text-white">DIVITO GYM</p>
       <p class="mt-2">&copy; 2026 DIVITO GYM. Tập luyện khỏe mạnh, sống tích cực.</p>
@@ -200,6 +209,7 @@
 
   <!-- ================= GIAO DIỆN QUẢN TRỊ / HỘI VIÊN ================= -->
   <div id="appShell" class="hidden min-h-screen flex flex-col bg-slate-50 md:flex-row">
+    <!-- Thanh bên hiển thị người dùng hiện tại; các mục menu sẽ được tạo theo vai trò. -->
     <aside class="w-full md:sticky md:top-0 md:h-screen md:w-64 bg-gradient-to-b from-blue-950 via-blue-900 to-blue-800 text-slate-100 flex flex-col shrink-0 shadow-xl">
       <div class="p-4 border-b border-white/10 flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white text-lg shadow">
@@ -230,6 +240,7 @@
       </div>
     </aside>
 
+    <!-- Khu vực nội dung thay đổi theo tab; pageTitle và pageSubtitle là tiêu đề động. -->
     <main class="flex-1 flex flex-col min-w-0">
       <header class="sticky top-0 z-30 bg-white/95 border-b border-slate-200 px-6 py-4 flex items-center justify-between shadow-sm backdrop-blur">
         <div>
@@ -244,6 +255,7 @@
     </main>
   </div>
 
+  <!-- Các modal là hộp thoại phủ trang; JavaScript mở/đóng bằng id và xử lý form tương ứng. -->
   <!-- MODAL ĐĂNG NHẬP -->
   <div id="loginModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl relative space-y-4">
@@ -289,7 +301,7 @@
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Mật khẩu</label>
-          <input id="regPass" type="password" required class="w-full p-2.5 border rounded-xl text-sm" placeholder="Mật khẩu..." />
+          <input id="regPass" type="password" minlength="6" required class="w-full p-2.5 border rounded-xl text-sm" placeholder="Ít nhất 6 ký tự..." />
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-600 mb-1">Xác nhận mật khẩu</label>
@@ -301,6 +313,7 @@
   </div>
 
   <!-- MODAL ĐĂNG KÝ GÓI TẬP -->
+  <!-- Tóm tắt gói và yêu cầu hội viên xác nhận trước khi chuyển sang bước QR. -->
   <div id="packageRegisterModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="w-full max-w-md space-y-5 rounded-3xl bg-white p-6 shadow-2xl">
       <div class="flex items-start gap-3">
@@ -330,6 +343,7 @@
   </div>
 
   <!-- MODAL THANH TOÁN QR CODE -->
+  <!-- QR trong bản demo là QR tĩnh; nút xác nhận chỉ ghi nhận thao tác trong trình duyệt. -->
   <div id="qrModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4 text-center">
       <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto text-xl">
@@ -347,12 +361,14 @@
       <p class="text-[11px] text-slate-500">Đây là QR tĩnh: vui lòng kiểm tra người nhận và nhập đúng số tiền ở trên. Bản demo chưa tự xác minh giao dịch.</p>
       <div class="flex gap-2 pt-2">
         <button onclick="confirmQRPayment()" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold shadow">Đã Thanh Toán</button>
+        <button onclick="recordPaymentFailure()" class="px-3 py-2.5 bg-rose-50 text-rose-700 rounded-xl text-xs font-semibold">Thất bại</button>
         <button onclick="closeModal('qrModal')" class="px-4 py-2.5 bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold">Hủy</button>
       </div>
     </div>
   </div>
 
   <!-- MODAL HÓA ĐƠN -->
+  <!-- Nội dung hóa đơn được dựng sau khi xác nhận giao dịch; hỗ trợ in qua trình duyệt. -->
   <div id="billModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl">
       <div class="bg-gradient-to-r from-blue-950 to-blue-800 p-6 text-white">
@@ -370,6 +386,7 @@
   </div>
 
   <!-- MODAL PT GỬI BÀI TẬP VÀ CHẾ ĐỘ ĂN -->
+  <!-- PT nhập hai phần kế hoạch; mã hội viên được lưu ẩn để biết kế hoạch thuộc về ai. -->
   <div id="ptPlanModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative space-y-4">
       <button onclick="closeModal('ptPlanModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
@@ -387,12 +404,17 @@
     </div>
   </div>
 
+  <!-- Vùng hiển thị thông báo ngắn sau thao tác thành công hoặc khi có lỗi/thiếu dữ liệu. -->
   <div id="toastBox" class="fixed bottom-4 right-4 z-50 space-y-2"></div>
 
   <script>
+    // Dữ liệu mặc định của ứng dụng, mô phỏng các bảng trong cơ sở dữ liệu quan hệ.
+    // Mỗi phần tử dùng mã liên kết (MaND, MaHoiVien, MaGoi...) thay cho quan hệ khóa ngoại.
     const INITIAL_DB = {
       NguoiDung: [
         { MaND: 'ND01', TenDangNhap: 'admin', MatKhau: '1', VaiTro: 'Admin', TrangThaiTaiKhoan: 'HoatDong' },
+        { MaND: 'QL01', TenDangNhap: 'quanly', MatKhau: '1', VaiTro: 'QuanLy', TrangThaiTaiKhoan: 'HoatDong' },
+        { MaND: 'LT01', TenDangNhap: 'letan', MatKhau: '1', VaiTro: 'LeTan', TrangThaiTaiKhoan: 'HoatDong' },
         { MaND: 'PT01', TenDangNhap: 'pt_hoang', MatKhau: '1', VaiTro: 'PT', TrangThaiTaiKhoan: 'HoatDong' }
       ],
       HoiVien: [],
@@ -411,6 +433,7 @@
       PT_Plans: []
     };
 
+    // Hồ sơ PT mẫu, được thêm khi khởi tạo để có dữ liệu phân công huấn luyện.
     const DEMO_TRAINERS = [
       { MaNV: 'PTDEMO01', HoTen: 'Trần Ngọc Lan (PT)', SoDienThoai: '0900000201', TenDangNhap: 'pt_demo_lan' },
       { MaNV: 'PTDEMO02', HoTen: 'Nguyễn Hoàng Minh (PT)', SoDienThoai: '0900000202', TenDangNhap: 'pt_demo_minh' },
@@ -419,6 +442,7 @@
       { MaNV: 'PTDEMO05', HoTen: 'Võ Gia Huy (PT)', SoDienThoai: '0900000205', TenDangNhap: 'pt_demo_huy' }
     ];
 
+    // Hội viên mẫu với các gói, PT và ngày bắt đầu khác nhau để minh họa nhiều trạng thái.
     const DEMO_MEMBERS = [
       { MaHoiVien: 'HVDEMO01', HoTen: 'Nguyễn Minh Anh', SoDienThoai: '0900000101', MaGoi: 'GOI01', NgayTruoc: 4 },
       { MaHoiVien: 'HVDEMO02', HoTen: 'Trần Quốc Bảo', SoDienThoai: '0900000102', MaGoi: 'GOI01', NgayTruoc: 9 },
@@ -437,6 +461,8 @@
       { MaHoiVien: 'HVDEMO15', HoTen: 'Ngô Phương Uyên', SoDienThoai: '0900000115', MaGoi: 'GOI03', MaPT: 'PTDEMO03', NgayTruoc: 174 }
     ];
 
+    // Bổ sung dữ liệu minh họa còn thiếu mà không ghi đè hồ sơ thật đã có trong trình duyệt.
+    // Cờ DuLieuMau giúp phân biệt dữ liệu demo với dữ liệu phát sinh do người dùng tạo.
     function installDemoData(db) {
       DEMO_TRAINERS.forEach(trainer => {
         const usernameConflict = db.NguoiDung.some(user =>
@@ -576,6 +602,8 @@
       });
     }
 
+    // Đọc dữ liệu đã lưu trong localStorage. Nếu chưa có thì dùng cấu trúc mặc định;
+    // nếu dữ liệu cũ lỗi/thiếu bảng thì sửa cấu trúc cần thiết để trang tiếp tục chạy.
     function loadDB() {
       const saved = localStorage.getItem('DIVITO_GYM_DB');
       const initial = JSON.parse(JSON.stringify(INITIAL_DB));
@@ -629,7 +657,7 @@
       }
       db.GoiTap = db.GoiTap.map(pkg => ({
         ...pkg,
-        CoPT: pkg.MaGoi === 'GOI03'
+        CoPT: Boolean(pkg.CoPT)
       }));
       const nonPTRegistrationIds = new Set();
       db.DangKyGoi.forEach(subscription => {
@@ -645,15 +673,22 @@
       return db;
     }
 
+    // DB là trạng thái dữ liệu đang dùng; các biến còn lại theo dõi phiên và giao dịch đang làm.
     let DB = loadDB();
     let currentUser = null;
     let pendingPkg = null;
     let pendingRegistration = null;
+    let pendingSaleType = 'DangKyMoi';
     let adminRevenueYear = new Date().getFullYear();
+    let memberScheduleWeekOffset = 0;
+    let editingPackageId = null;
+    let receiptSearchQuery = '';
 
+    // Lưu toàn bộ trạng thái hiện tại dưới dạng JSON trong bộ nhớ của trình duyệt.
     function saveDB() {
       localStorage.setItem('DIVITO_GYM_DB', JSON.stringify(DB));
     }
+    // Khởi tạo bổ sung dữ liệu demo, lịch mẫu và lưu lại ngay để những lần mở sau dùng cùng dữ liệu.
     installDemoData(DB);
     DB.LichTap.forEach(session => {
       if (DB.DangKyGoi.some(subscription =>
@@ -662,9 +697,22 @@
     });
     DB.DangKyGoi.filter(subscription => subscription.DuLieuMau)
       .forEach(ensureDemoScheduleForSubscription);
+    // Chuyển các lịch cũ sang khung giờ mới khi trang được mở lại.
+    DB.LichTap.forEach(session => {
+      const subscription = DB.DangKyGoi.find(item => item.MaDangKy === session.MaDangKy) ||
+        getLatestSubscription(session.MaHoiVien);
+      if (!subscription) return;
+      const time = getTrainingTime(subscription, new Date(`${session.NgayTap}T00:00:00`));
+      if (!time) return;
+      session.GioBatDau = time.start;
+      session.GioKetThuc = time.end;
+    });
     saveDB();
 
+    // Nhóm các hàm hiển thị và tra cứu dữ liệu dùng chung cho nhiều màn hình.
     function formatMoney(v) { return Number(v).toLocaleString('vi-VN') + ' VNĐ'; }
+
+    // Dựng các thẻ gói còn mở bán từ DB; nút chọn hiện yêu cầu khách tạo/đăng nhập tài khoản.
     function renderPublicPackages() {
       const container = document.getElementById('homePackageCards');
       if (!container) return;
@@ -691,16 +739,31 @@
       `).join('');
     }
     renderPublicPackages();
+    // Chuẩn hóa ngày thành YYYY-MM-DD để so sánh ngày và ghi vào dữ liệu nhất quán.
     function formatDate(date) {
       const year = date.getFullYear();
       const month = String(date.getMonth() + 1).padStart(2, '0');
       const day = String(date.getDate()).padStart(2, '0');
       return `${year}-${month}-${day}`;
     }
+    // Lấy đăng ký cuối cùng của hội viên; mảng hiện được dùng theo thứ tự tạo bản ghi.
     function getLatestSubscription(memberId) {
-      const subscriptions = DB.DangKyGoi.filter(d => d.MaHoiVien === memberId);
+      const subscriptions = DB.DangKyGoi.filter(d =>
+        d.MaHoiVien === memberId && d.TrangThaiDangKy !== 'ChoThanhToan' && d.TrangThaiDangKy !== 'DaHuy'
+      );
       return subscriptions[subscriptions.length - 1] || null;
     }
+    // Chọn gói đang có hiệu lực trước, rồi đến gói gia hạn sắp bắt đầu để portal không ẩn gói cũ.
+    function getCurrentOrNextSubscription(memberId) {
+      const today = formatDate(new Date());
+      const subscriptions = DB.DangKyGoi.filter(item =>
+        item.MaHoiVien === memberId && item.TrangThaiDangKy === 'KichHoat'
+      );
+      return subscriptions.slice().reverse().find(item =>
+        item.NgayBatDau <= today && item.NgayHetHan >= today
+      ) || subscriptions.find(item => item.NgayBatDau > today) || getLatestSubscription(memberId);
+    }
+    // Chỉ gói có cờ CoPT mới có PT; trả về hồ sơ PT được gắn với đăng ký đó.
     function getSubscriptionTrainer(subscription) {
       if (!subscription) return null;
       const pkg = DB.GoiTap.find(g => g.MaGoi === subscription.MaGoi);
@@ -708,6 +771,8 @@
       const trainerId = subscription.MaPT || DB.NhanVien_PT[0]?.MaNV;
       return DB.NhanVien_PT.find(pt => pt.MaNV === trainerId) || null;
     }
+    // Chọn PT hoạt động ít tải nhất; tối đa ba gói PT đang hiệu lực/chờ trên mỗi PT
+    // tương ứng ba khung 90 phút không chồng lấn trong lịch mẫu.
     function getLeastAssignedTrainer() {
       const today = formatDate(new Date());
       return DB.NhanVien_PT.filter(trainer => trainer.TrangThai === 'HoatDong')
@@ -719,8 +784,50 @@
               (subscription.TrangThaiDangKy === 'KichHoat' && subscription.NgayHetHan >= today))
           ).length
         }))
+        .filter(item => item.load < 3)
         .sort((a, b) => a.load - b.load)[0]?.trainer || null;
     }
+
+    function getTrainerForSale(pkg, previousSubscription) {
+      if (!pkg || !pkg.CoPT) return null;
+      const previousTrainer = previousSubscription && DB.NhanVien_PT.find(item =>
+        item.MaNV === previousSubscription.MaPT && item.TrangThai === 'HoatDong'
+      );
+      return previousTrainer || getLeastAssignedTrainer();
+    }
+    // Chọn giờ cố định theo ngày: Thứ 2 buổi sáng, Thứ 4 chiều, Thứ 6 tối.
+    // Hội viên cùng PT được chia luân phiên giờ khác nhau để tránh trùng buổi 1-1.
+    function getTrainingTime(subscription, date) {
+      const trainer = getSubscriptionTrainer(subscription);
+      if (trainer) {
+        const startDate = subscription.NgayBatDau || '';
+        const endDate = subscription.NgayHetHan || '';
+        const trainerSubscriptions = DB.DangKyGoi.filter(item =>
+          item.MaPT === trainer.MaNV &&
+          ['ChoThanhToan', 'KichHoat'].includes(item.TrangThaiDangKy) &&
+          item.NgayBatDau && item.NgayHetHan &&
+          item.NgayBatDau <= endDate && item.NgayHetHan >= startDate
+        );
+        const memberIndex = Math.max(0, trainerSubscriptions.findIndex(item =>
+          item.MaDangKy === subscription.MaDangKy
+        ));
+        const trainerSlots = [
+          { start: '05:00', end: '06:30' },
+          { start: '16:00', end: '17:30' },
+          { start: '18:00', end: '19:30' }
+        ];
+        return trainerSlots[memberIndex % trainerSlots.length];
+      }
+
+      const selfTrainingSlots = {
+        1: { start: '05:00', end: '06:00' },
+        3: { start: '16:00', end: '17:00' },
+        5: { start: '18:00', end: '19:00' }
+      };
+      return selfTrainingSlots[date.getDay()] || null;
+    }
+
+    // Tạo ba buổi mỗi tuần (Thứ 2, 4, 6), nghỉ xen kẽ; lấy giờ và thời lượng từ gói.
     function createScheduleForSubscription(subscription) {
       const trainer = getSubscriptionTrainer(subscription);
       const start = new Date(`${subscription.NgayBatDau}T00:00:00`);
@@ -730,14 +837,16 @@
 
       for (const date = new Date(start); date <= end; date.setDate(date.getDate() + 1)) {
         if (!trainingDays.has(date.getDay())) continue;
+        const time = getTrainingTime(subscription, date);
+        if (!time) continue;
         schedule.push({
           MaLich: 'LT' + String(DB.LichTap.length + schedule.length + 1).padStart(3, '0'),
           MaDangKy: subscription.MaDangKy,
           MaHoiVien: subscription.MaHoiVien,
           MaPT: trainer ? trainer.MaNV : null,
           NgayTap: formatDate(date),
-          GioBatDau: '08:00',
-          GioKetThuc: trainer ? '09:30' : '09:00',
+          GioBatDau: time.start,
+          GioKetThuc: time.end,
           TrangThaiBuoiTap: 'DaLich',
           ...(subscription.DuLieuMau ? { DuLieuMau: true } : {})
         });
@@ -745,6 +854,7 @@
 
       DB.LichTap.push(...schedule);
     }
+    // Lịch demo chỉ giữ/tạo tối đa 12 buổi sắp tới, tránh làm dữ liệu mẫu quá dài.
     function ensureDemoScheduleForSubscription(subscription) {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
@@ -768,6 +878,8 @@
         if (!trainingDays.has(date.getDay())) continue;
         const day = formatDate(date);
         if (DB.LichTap.some(session => session.MaDangKy === subscription.MaDangKy && session.NgayTap === day)) continue;
+        const time = getTrainingTime(subscription, date);
+        if (!time) continue;
         sessionNumber += 1;
         DB.LichTap.push({
           MaLich: `LTDEMO-${subscription.MaDangKy}-${String(sessionNumber).padStart(2, '0')}`,
@@ -775,13 +887,14 @@
           MaHoiVien: subscription.MaHoiVien,
           MaPT: trainer ? trainer.MaNV : null,
           NgayTap: day,
-          GioBatDau: '08:00',
-          GioKetThuc: trainer ? '09:30' : '09:00',
+          GioBatDau: time.start,
+          GioKetThuc: time.end,
           TrangThaiBuoiTap: 'DaLich',
           DuLieuMau: true
         });
       }
     }
+    // Nếu đăng ký hợp lệ nhưng chưa có lịch thì tạo lịch một lần rồi lưu lại.
     function ensureScheduleForSubscription(subscription) {
       if (!subscription || DB.LichTap.some(l => l.MaDangKy === subscription.MaDangKy)) return;
       const pkg = DB.GoiTap.find(g => g.MaGoi === subscription.MaGoi);
@@ -789,9 +902,108 @@
       createScheduleForSubscription(subscription);
       saveDB();
     }
+
+    // Vẽ lịch tuần theo ngày và khung giờ phòng tập mở, tương tự thời khóa biểu trong ảnh.
+    function renderMemberWeeklySchedule(sessions, showMemberNames = false) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const mondayOffset = (today.getDay() + 6) % 7;
+      const monday = new Date(today);
+      monday.setDate(monday.getDate() - mondayOffset + memberScheduleWeekOffset * 7);
+      const weekDays = Array.from({ length: 7 }, (_, index) => {
+        const date = new Date(monday);
+        date.setDate(monday.getDate() + index);
+        return date;
+      });
+      const dayNames = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'];
+      const timeSlots = [
+        { start: '05:00', end: '06:00' },
+        { start: '06:00', end: '07:00' },
+        { start: '16:00', end: '17:00' },
+        { start: '17:00', end: '18:00' },
+        { start: '18:00', end: '19:00' },
+        { start: '19:00', end: '20:00' }
+      ];
+      const weekSessions = sessions.filter(session =>
+        session.NgayTap >= formatDate(weekDays[0]) && session.NgayTap <= formatDate(weekDays[6])
+      );
+      const weekLabel = `${weekDays[0].toLocaleDateString('vi-VN')} - ${weekDays[6].toLocaleDateString('vi-VN')}`;
+
+      return `
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p class="text-sm font-bold text-slate-900">Thời khóa biểu dạng tuần</p>
+              <p class="mt-1 text-xs text-slate-500">${weekLabel} · ${showMemberNames ? 'Lịch hướng dẫn được phân công cho bạn' : 'Tập Thứ 2, 4, 6 để có ngày nghỉ xen kẽ'}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="changeMemberScheduleWeek(-1)" class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50" aria-label="Tuần trước">
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+              <button onclick="changeMemberScheduleWeek(1)" class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50" aria-label="Tuần sau">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="min-w-[900px] w-full border-collapse text-left text-xs">
+              <thead class="bg-slate-50 text-slate-700">
+                <tr>
+                  <th class="w-24 border-b border-r border-slate-200 p-3">Giờ tập</th>
+                  ${weekDays.map((date, index) => `
+                    <th class="border-b border-r border-slate-200 p-3 text-center">
+                      <span class="block font-bold">${dayNames[index]}</span>
+                      <span class="mt-1 block font-normal text-slate-500">${date.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' })}</span>
+                    </th>
+                  `).join('')}
+                </tr>
+              </thead>
+              <tbody>
+                ${timeSlots.map(slot => `
+                  <tr>
+                    <th class="whitespace-nowrap border-b border-r border-slate-200 bg-slate-50 p-3 font-semibold text-slate-600">${slot.start} - ${slot.end}</th>
+                    ${weekDays.map(date => {
+                      const session = weekSessions.find(item =>
+                        item.NgayTap === formatDate(date) &&
+                        timeToMinutes(item.GioBatDau) >= timeToMinutes(slot.start) &&
+                        timeToMinutes(item.GioBatDau) < timeToMinutes(slot.end)
+                      );
+                      return `
+                        <td class="h-20 border-b border-r border-slate-200 p-2 align-top">
+                          ${session ? `
+                            <div class="h-full rounded-lg border border-blue-200 bg-blue-50 p-2 text-blue-900">
+                              <p class="truncate font-bold">${showMemberNames
+                                ? escapeHTML((DB.HoiVien.find(member => member.MaHoiVien === session.MaHoiVien) || {}).HoTen || 'Hội viên')
+                                : 'Buổi tập'}</p>
+                              <p class="mt-1">${session.GioBatDau} - ${session.GioKetThuc}</p>
+                              <p class="mt-1 text-[10px] text-blue-700">${session.TrangThaiBuoiTap}</p>
+                            </div>
+                          ` : '<span class="text-slate-300">—</span>'}
+                        </td>
+                      `;
+                    }).join('')}
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+          <p class="text-[11px] leading-5 text-slate-500">Khung giờ tập: 05:00-07:00 và 16:00-20:00. Buổi tự tập kéo dài 60 phút; buổi có PT kéo dài 90 phút.</p>
+          ${weekSessions.length ? '' : '<p class="rounded-lg bg-slate-50 p-3 text-xs text-slate-500">Tuần này chưa có buổi tập trong lịch.</p>'}
+        </div>
+      `;
+    }
+
+    // Chuyển tuần đang xem và dựng lại cổng hội viên để cập nhật thời khóa biểu.
+    function changeMemberScheduleWeek(offset) {
+      memberScheduleWeekOffset += offset;
+      renderMemberPortal(document.getElementById('mainContent'));
+    }
+
+    // Hàm dùng chung để đổi trạng thái ẩn/hiện của các hộp thoại theo id.
     function openModal(id) { document.getElementById(id).classList.remove('hidden'); document.getElementById(id).classList.add('flex'); }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); }
 
+    // Tạo thông báo tạm thời; màu sắc biểu thị thành công, lỗi hoặc thông tin.
     function showToast(msg, type = 'info') {
       const colors = { success: 'bg-emerald-600 text-white', error: 'bg-rose-600 text-white', info: 'bg-slate-800 text-white' };
       const el = document.createElement('div');
@@ -801,6 +1013,7 @@
       setTimeout(() => el.remove(), 3500);
     }
 
+    // Luồng đăng ký công khai: kiểm tra mật khẩu/tên tài khoản, tạo hồ sơ và lưu DB.
     function handlePublicRegister(e) {
       e.preventDefault();
       const name = document.getElementById('regName').value.trim();
@@ -809,8 +1022,14 @@
       const pass = document.getElementById('regPass').value.trim();
       const passConfirm = document.getElementById('regPassConfirm').value.trim();
 
+      if (pass.length < 6) return showToast('Mật khẩu cần có ít nhất 6 ký tự.', 'error');
       if (pass !== passConfirm) return showToast('Xác nhận mật khẩu không khớp!', 'error');
-      if (DB.NguoiDung.some(u => u.TenDangNhap === uname)) return showToast('Tên đăng nhập đã tồn tại trong hệ thống!', 'error');
+      if (DB.NguoiDung.some(u => typeof u.TenDangNhap === 'string' && u.TenDangNhap.toLowerCase() === uname.toLowerCase())) {
+        return showToast('Tên đăng nhập đã tồn tại trong hệ thống!', 'error');
+      }
+      if (DB.HoiVien.some(member => member.SoDienThoai === phone)) {
+        return showToast('Số điện thoại đã được đăng ký.', 'error');
+      }
 
       const code = 'HV' + String(DB.HoiVien.length + 1).padStart(3, '0');
       DB.NguoiDung.push({ MaND: code, TenDangNhap: uname, MatKhau: pass, VaiTro: 'HoiVien', TrangThaiTaiKhoan: 'HoatDong' });
@@ -822,24 +1041,44 @@
       openModal('loginModal');
     }
 
+    // UC01: Đăng nhập bằng tài khoản hoặc SĐT hội viên; từ chối tài khoản ngừng hoạt động
+    // và khóa tạm 15 phút sau 5 lần nhập sai mật khẩu liên tiếp.
     function handleLoginSubmit(e) {
       e.preventDefault();
       const u = document.getElementById('modalUser').value.trim();
       const p = document.getElementById('modalPass').value.trim();
 
       let user = DB.NguoiDung.find(x =>
-        typeof x.TenDangNhap === 'string' && x.TenDangNhap.toLowerCase() === u.toLowerCase() && x.MatKhau === p
+        typeof x.TenDangNhap === 'string' && x.TenDangNhap.toLowerCase() === u.toLowerCase()
       );
       if (!user) {
         const hv = DB.HoiVien.find(h => h.SoDienThoai === u);
-        if (hv) user = DB.NguoiDung.find(x => x.MaND === hv.MaHoiVien && x.MatKhau === p);
+        if (hv) user = DB.NguoiDung.find(x => x.MaND === hv.MaHoiVien);
       }
 
       if (!user) return showToast('Sai tên đăng nhập hoặc mật khẩu!', 'error');
+      if (Number(user.KhoaDen) > Date.now()) {
+        const remainingMinutes = Math.ceil((Number(user.KhoaDen) - Date.now()) / 60000);
+        return showToast(`Tài khoản đang bị khóa tạm thời. Vui lòng thử lại sau ${remainingMinutes} phút.`, 'error');
+      }
       if (user.TrangThaiTaiKhoan === 'NgungHoatDong') {
         return showToast('Tài khoản đã ngừng hoạt động. Vui lòng liên hệ quản trị viên.', 'error');
       }
+      if (user.MatKhau !== p) {
+        user.SoLanSai = Number(user.SoLanSai || 0) + 1;
+        if (user.SoLanSai >= 5) {
+          user.KhoaDen = Date.now() + 15 * 60 * 1000;
+          user.SoLanSai = 0;
+          saveDB();
+          return showToast('Nhập sai 5 lần. Tài khoản đã bị khóa tạm thời trong 15 phút.', 'error');
+        }
+        saveDB();
+        return showToast(`Sai mật khẩu. Bạn còn ${5 - user.SoLanSai} lần thử.`, 'error');
+      }
 
+      user.SoLanSai = 0;
+      user.KhoaDen = null;
+      saveDB();
       currentUser = user;
       closeModal('loginModal');
       document.getElementById('homePage').classList.add('hidden');
@@ -847,6 +1086,7 @@
       setupRoleNavigation();
     }
 
+    // Kết thúc phiên trong giao diện; dữ liệu lưu không bị xóa khi đăng xuất.
     function logout() {
       currentUser = null;
       document.getElementById('appShell').classList.add('hidden');
@@ -854,21 +1094,31 @@
       showToast('Đã đăng xuất', 'info');
     }
 
+    // Quay về trang công khai nhưng vẫn giữ phiên đăng nhập hiện tại.
     function goToHome() {
       document.getElementById('appShell').classList.add('hidden');
       document.getElementById('homePage').classList.remove('hidden');
     }
 
+    // Bước 1 mua gói: xác nhận vai trò, gói và khả năng có PT rồi mở hộp xác nhận.
     function promptBuyPackage(maGoi) {
       const pkg = DB.GoiTap.find(g => g.MaGoi === maGoi);
-      if (!currentUser || currentUser.VaiTro !== 'HoiVien' || !pkg) {
+      if (!currentUser || currentUser.VaiTro !== 'HoiVien' || !pkg || pkg.TrangThai !== 'DangCungCap') {
         showToast('Không thể chọn gói tập này. Vui lòng đăng nhập bằng tài khoản hội viên.', 'error');
         return;
       }
-      if (pkg.CoPT && !getLeastAssignedTrainer()) {
-        showToast('Hiện chưa có huấn luyện viên hoạt động để nhận hội viên gói này.', 'error');
+      const today = formatDate(new Date());
+      const activeSubscription = DB.DangKyGoi.slice().reverse().find(item =>
+        item.MaHoiVien === currentUser.MaND && item.TrangThaiDangKy === 'KichHoat' &&
+        item.NgayBatDau <= today && item.NgayHetHan >= today
+      );
+      if (pkg.CoPT && !getTrainerForSale(pkg, activeSubscription)) {
+        showToast('Hiện chưa có huấn luyện viên hoạt động hoặc còn chỗ nhận hội viên gói này.', 'error');
         return;
       }
+      pendingSaleType = activeSubscription
+        ? (activeSubscription.MaGoi === pkg.MaGoi ? 'GiaHan' : 'DoiGoi')
+        : 'DangKyMoi';
       pendingPkg = pkg;
       const member = DB.HoiVien.find(item => item.MaHoiVien === currentUser.MaND);
       document.getElementById('packageRegMember').textContent = member ? member.HoTen : currentUser.TenDangNhap;
@@ -878,10 +1128,31 @@
       openModal('packageRegisterModal');
     }
 
+    // Bước 2: tạo/tái sử dụng đăng ký chờ thanh toán, phân PT nếu cần rồi mở QR.
     function confirmPackageRegistration(event) {
       event.preventDefault();
       if (!currentUser || currentUser.VaiTro !== 'HoiVien' || !pendingPkg) {
         showToast('Không tìm thấy gói đăng ký. Vui lòng chọn lại gói tập.', 'error');
+        closeModal('packageRegisterModal');
+        return;
+      }
+      if (pendingPkg.TrangThai !== 'DangCungCap') {
+        showToast('Gói này đã ngừng bán. Vui lòng chọn gói khác.', 'error');
+        closeModal('packageRegisterModal');
+        return;
+      }
+
+      const today = formatDate(new Date());
+      const activeSubscription = DB.DangKyGoi.slice().reverse().find(item =>
+        item.MaHoiVien === currentUser.MaND && item.TrangThaiDangKy === 'KichHoat' &&
+        item.NgayBatDau <= today && item.NgayHetHan >= today
+      );
+      if ((pendingSaleType === 'DangKyMoi' && activeSubscription) ||
+          (pendingSaleType === 'DoiGoi' && !activeSubscription) ||
+          (pendingSaleType === 'GiaHan' && !DB.DangKyGoi.some(item =>
+            item.MaHoiVien === currentUser.MaND && item.TrangThaiDangKy === 'KichHoat'
+          ))) {
+        showToast('Trạng thái gói hội viên đã thay đổi. Hãy chọn lại nghiệp vụ.', 'error');
         closeModal('packageRegisterModal');
         return;
       }
@@ -903,9 +1174,7 @@
           pendingRegistration.MaPT = replacementTrainer.MaNV;
         }
       } else {
-        const trainer = pendingPkg.CoPT
-          ? getLeastAssignedTrainer()
-          : null;
+        const trainer = getTrainerForSale(pendingPkg, activeSubscription);
         if (pendingPkg.CoPT && !trainer) {
           showToast('Hiện chưa có huấn luyện viên hoạt động để nhận hội viên gói này.', 'error');
           return;
@@ -916,24 +1185,32 @@
           MaHoiVien: currentUser.MaND,
           MaGoi: pendingPkg.MaGoi,
           MaPT: trainer ? trainer.MaNV : null,
+          MaDangKyCu: activeSubscription ? activeSubscription.MaDangKy : null,
+          NguoiLap: currentUser.MaND,
           NgayDangKy: formatDate(new Date()),
           NgayBatDau: null,
           NgayHetHan: null,
-          LoaiNghiepVu: 'DangKyMoi',
+          LoaiNghiepVu: pendingSaleType,
           TrangThaiDangKy: 'ChoThanhToan'
         };
         DB.DangKyGoi.push(pendingRegistration);
       }
+      pendingRegistration.LoaiNghiepVu = pendingSaleType;
+      pendingRegistration.MaDangKyCu = activeSubscription ? activeSubscription.MaDangKy : pendingRegistration.MaDangKyCu || null;
+      pendingRegistration.NguoiLap = currentUser.MaND;
       saveDB();
       closeModal('packageRegisterModal');
-      document.getElementById('qrImage').src = 'payment-qr.png';
-      document.getElementById('qrAmountText').textContent = formatMoney(pendingPkg.GiaTien);
-      openModal('qrModal');
+      openPendingSaleQR();
     }
 
+    // Bước 3 của bản demo: nút bấm ghi giao dịch thành công, kích hoạt gói,
+    // tạo lịch, lưu dữ liệu rồi hiển thị hóa đơn (không đối soát với ngân hàng).
     function confirmQRPayment() {
-      if (!currentUser || currentUser.VaiTro !== 'HoiVien' || !pendingPkg || !pendingRegistration ||
-          pendingRegistration.MaHoiVien !== currentUser.MaND ||
+      const memberSelfPayment = currentUser && currentUser.VaiTro === 'HoiVien' &&
+        pendingRegistration && pendingRegistration.MaHoiVien === currentUser.MaND;
+      const staffPayment = currentUser && ['Admin', 'LeTan'].includes(currentUser.VaiTro) &&
+        pendingRegistration && pendingRegistration.NguoiLap === currentUser.MaND;
+      if ((!memberSelfPayment && !staffPayment) || !pendingPkg || !pendingRegistration ||
           pendingRegistration.MaGoi !== pendingPkg.MaGoi ||
           pendingRegistration.TrangThaiDangKy !== 'ChoThanhToan') {
         showToast('Không tìm thấy giao dịch cần xác nhận. Vui lòng chọn lại gói tập.', 'error');
@@ -942,8 +1219,17 @@
       }
 
       const pkg = DB.GoiTap.find(item => item.MaGoi === pendingRegistration.MaGoi);
-      if (!pkg) {
-        showToast('Gói tập của đăng ký này không còn tồn tại.', 'error');
+      if (!pkg || pkg.TrangThai !== 'DangCungCap') {
+        showToast('Gói đăng ký không còn mở bán; chưa thể xác nhận thanh toán.', 'error');
+        closeModal('qrModal');
+        return;
+      }
+      const member = DB.HoiVien.find(item =>
+        item.MaHoiVien === pendingRegistration.MaHoiVien && item.TrangThai !== 'NgungHoatDong'
+      );
+      const memberAccount = DB.NguoiDung.find(item => item.MaND === pendingRegistration.MaHoiVien);
+      if (!member || !memberAccount || memberAccount.TrangThaiTaiKhoan === 'NgungHoatDong') {
+        showToast('Hội viên không tồn tại hoặc đang ngừng hoạt động.', 'error');
         closeModal('qrModal');
         return;
       }
@@ -961,6 +1247,23 @@
       const maPTU = 'PTU' + String(DB.PhieuThu.length + 1).padStart(3, '0');
       const now = new Date();
       const startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const previousSubscription = pendingRegistration.MaDangKyCu
+        ? DB.DangKyGoi.find(item => item.MaDangKy === pendingRegistration.MaDangKyCu)
+        : null;
+      if (pendingRegistration.LoaiNghiepVu === 'GiaHan' && previousSubscription &&
+          previousSubscription.NgayHetHan >= formatDate(startDate)) {
+        startDate.setTime(new Date(`${previousSubscription.NgayHetHan}T00:00:00`).getTime());
+        startDate.setDate(startDate.getDate() + 1);
+      }
+      if (pendingRegistration.LoaiNghiepVu === 'DoiGoi' && previousSubscription) {
+        previousSubscription.TrangThaiDangKy = 'DaThayThe';
+        DB.LichTap.forEach(session => {
+          if (session.MaDangKy === previousSubscription.MaDangKy &&
+              session.NgayTap >= formatDate(new Date()) && session.TrangThaiBuoiTap === 'DaLich') {
+            session.TrangThaiBuoiTap = 'DaHuy';
+          }
+        });
+      }
       const endDate = new Date(startDate);
       endDate.setDate(endDate.getDate() + Number(pkg.ThoiHan) - 1);
       pendingRegistration.MaPT = trainer ? trainer.MaNV : null;
@@ -980,14 +1283,15 @@
         MaPhieuThu: maPTU,
         MaGiaoDich: maGD,
         MaDangKy: maDK,
-        MaHoiVien: currentUser.MaND,
+        MaHoiVien: pendingRegistration.MaHoiVien,
         MaGoi: pkg.MaGoi,
+        LoaiNghiepVu: pendingRegistration.LoaiNghiepVu,
         NgayBatDau: pendingRegistration.NgayBatDau,
         NgayHetHan: pendingRegistration.NgayHetHan,
         SoTien: pkg.GiaTien,
         PhuongThuc: payment.PhuongThuc,
         NgayLap: paidAt,
-        NhanVienLap: 'Hội viên trực tuyến'
+        NhanVienLap: staffPayment ? currentUser.TenDangNhap : 'Hội viên trực tuyến'
       };
       DB.GiaoDichThanhToan.push(payment);
       DB.PhieuThu.push(receipt);
@@ -998,11 +1302,44 @@
       pendingPkg = null;
       pendingRegistration = null;
       closeModal('qrModal');
-      renderMemberPortal(document.getElementById('mainContent'));
+      if (currentUser.VaiTro === 'HoiVien') {
+        renderMemberPortal(document.getElementById('mainContent'));
+      } else {
+        renderFrontDeskSales(document.getElementById('mainContent'));
+      }
       renderBill(receipt);
       openModal('billModal');
     }
 
+    // Ghi nhận kết quả thất bại để đối soát lịch sử; không kích hoạt gói hoặc tạo phiếu thu.
+    function recordPaymentFailure() {
+      if (!pendingRegistration || !pendingPkg) {
+        showToast('Không có giao dịch đang chờ để ghi nhận thất bại.', 'error');
+        return;
+      }
+      const isMember = currentUser && currentUser.VaiTro === 'HoiVien' &&
+        currentUser.MaND === pendingRegistration.MaHoiVien;
+      const isStaff = currentUser && ['Admin', 'LeTan'].includes(currentUser.VaiTro) &&
+        currentUser.MaND === pendingRegistration.NguoiLap;
+      if (!isMember && !isStaff) {
+        showToast('Bạn không có quyền cập nhật giao dịch này.', 'error');
+        return;
+      }
+      DB.GiaoDichThanhToan.push({
+        MaGiaoDich: getNextRecordId('GD', DB.GiaoDichThanhToan, 'MaGiaoDich'),
+        MaDangKy: pendingRegistration.MaDangKy,
+        SoTien: pendingPkg.GiaTien,
+        PhuongThuc: 'MoMo / VietQR (demo)',
+        ThoiGian: new Date().toISOString(),
+        TrangThaiGiaoDich: 'ThanhToanThatBai'
+      });
+      saveDB();
+      closeModal('qrModal');
+      showToast('Đã ghi nhận thanh toán thất bại; gói chưa được kích hoạt. Có thể thử lại.', 'error');
+      if (isStaff) renderFrontDeskSales(document.getElementById('mainContent'));
+    }
+
+    // Ghép thông tin hội viên, gói, thanh toán và thời hạn vào mẫu hóa đơn.
     function renderBill(receipt) {
       const member = DB.HoiVien.find(item => item.MaHoiVien === receipt.MaHoiVien);
       const pkg = DB.GoiTap.find(item => item.MaGoi === receipt.MaGoi);
@@ -1016,7 +1353,7 @@
           <div class="flex justify-between gap-4"><span class="text-slate-500">Hội viên</span><b class="text-right text-slate-900">${escapeHTML(member ? member.HoTen : currentUser.TenDangNhap)}</b></div>
           <div class="flex justify-between gap-4"><span class="text-slate-500">Gói tập</span><b class="text-right text-slate-900">${escapeHTML(pkg ? pkg.TenGoi : receipt.MaGoi)}</b></div>
           <div class="flex justify-between gap-4"><span class="text-slate-500">Phương thức</span><b class="text-right text-slate-900">${escapeHTML(receipt.PhuongThuc)}</b></div>
-          <div class="flex justify-between gap-4"><span class="text-slate-500">Thời gian tập</span><b class="text-right text-slate-900">${escapeHTML(receipt.NgayBatDau)} – ${escapeHTML(receipt.NgayHetHan)}</b></div>
+          <div class="flex justify-between gap-4"><span class="text-slate-500">Thời gian tập</span><b class="text-right text-slate-900">${escapeHTML(receipt.NgayBatDau || '—')} – ${escapeHTML(receipt.NgayHetHan || '—')}</b></div>
         </div>
         <div class="flex items-center justify-between border-t border-slate-200 pt-4">
           <span class="font-semibold text-slate-700">Tổng thanh toán</span>
@@ -1026,11 +1363,33 @@
       `;
     }
 
+    // Bản đồ quyền truy cập: mỗi vai trò chỉ nhìn thấy các tab được khai báo tại đây.
     const ROLE_MENUS = {
       Admin: [
+        { id: 'admin_accounts', label: 'Tài khoản & phân quyền', icon: 'fa-user-shield' },
+        { id: 'admin_packages', label: 'Quản lý gói tập', icon: 'fa-boxes-stacked' },
+        { id: 'admin_staff', label: 'Quản lý nhân sự', icon: 'fa-user-tie' },
         { id: 'admin_rev', label: 'Báo Cáo Doanh Thu', icon: 'fa-chart-pie' },
         { id: 'admin_members', label: 'Quản Lý Hội Viên', icon: 'fa-users' },
-        { id: 'admin_pt', label: 'Quản Lý Huấn Luyện Viên', icon: 'fa-user-tie' }
+        { id: 'admin_stats', label: 'Thống kê hội viên', icon: 'fa-chart-column' },
+        { id: 'admin_receipts', label: 'Tra cứu phiếu thu', icon: 'fa-receipt' },
+        { id: 'front_members', label: 'Tiếp nhận hội viên', icon: 'fa-user-plus' },
+        { id: 'front_sales', label: 'Đăng ký / gia hạn / đổi gói', icon: 'fa-cart-shopping' },
+        { id: 'front_schedule', label: 'Quản lý lịch tập', icon: 'fa-calendar-days' }
+      ],
+      QuanLy: [
+        { id: 'admin_packages', label: 'Quản lý gói tập', icon: 'fa-boxes-stacked' },
+        { id: 'admin_staff', label: 'Quản lý nhân sự', icon: 'fa-user-tie' },
+        { id: 'admin_rev', label: 'Báo Cáo Doanh Thu', icon: 'fa-chart-pie' },
+        { id: 'admin_members', label: 'Quản Lý Hội Viên', icon: 'fa-users' },
+        { id: 'admin_stats', label: 'Thống kê hội viên', icon: 'fa-chart-column' },
+        { id: 'admin_receipts', label: 'Tra cứu phiếu thu', icon: 'fa-receipt' }
+      ],
+      LeTan: [
+        { id: 'front_members', label: 'Quản lý hội viên', icon: 'fa-users' },
+        { id: 'front_sales', label: 'Đăng ký / gia hạn / đổi gói', icon: 'fa-cart-shopping' },
+        { id: 'admin_receipts', label: 'Tra cứu phiếu thu', icon: 'fa-receipt' },
+        { id: 'front_schedule', label: 'Quản lý lịch tập', icon: 'fa-calendar-days' }
       ],
       PT: [
         { id: 'pt_members', label: 'Hội Viên Theo Dõi & Lên Kế Hoạch', icon: 'fa-dumbbell' },
@@ -1043,11 +1402,15 @@
       ]
     };
 
+    // Cập nhật tên/avatar, tạo nút menu theo vai trò và mở tab đầu tiên.
     function setupRoleNavigation() {
       const member = currentUser.VaiTro === 'HoiVien'
         ? DB.HoiVien.find(h => h.MaHoiVien === currentUser.MaND)
         : null;
-      const fullName = (member && member.HoTen) || currentUser.TenDangNhap || 'Hội viên';
+      const trainer = currentUser.VaiTro === 'PT'
+        ? DB.NhanVien_PT.find(item => item.MaNV === currentUser.MaND)
+        : null;
+      const fullName = (member && member.HoTen) || (trainer && trainer.HoTen) || currentUser.TenDangNhap || 'Người dùng';
       document.getElementById('userDisplayName').textContent = fullName;
       document.getElementById('userRoleBadge').textContent = `Vai trò: ${currentUser.VaiTro}`;
       document.getElementById('userAvatar').textContent = fullName.charAt(0).toUpperCase();
@@ -1072,20 +1435,39 @@
       renderTab(menus[0].id);
     }
 
+    // Điều phối tab đến hàm dựng giao diện tương ứng; lỗi hiển thị được ghi Console và báo rõ.
     function renderTab(tabId) {
       const el = document.getElementById('mainContent');
       try {
+        const allowedTabs = ROLE_MENUS[currentUser && currentUser.VaiTro] || [];
+        if (!allowedTabs.some(menu => menu.id === tabId)) {
+          throw new Error(`Tài khoản không có quyền mở trang: ${tabId}`);
+        }
         document.querySelectorAll('.nav-btn').forEach(b => {
           if (b.dataset.tab === tabId) b.classList.add('bg-blue-600', 'text-white', 'font-semibold');
           else b.classList.remove('bg-blue-600', 'text-white', 'font-semibold');
         });
 
-        if (tabId === 'admin_rev') {
+        if (tabId === 'admin_accounts') {
+          renderAdminAccounts(el);
+        } else if (tabId === 'admin_packages') {
+          renderPackageManagement(el);
+        } else if (tabId === 'admin_staff' || tabId === 'admin_pt') {
+          renderAdminPTs(el);
+        } else if (tabId === 'admin_rev') {
           renderAdminRevenue(el);
         } else if (tabId === 'admin_members') {
           renderAdminMembers(el);
-        } else if (tabId === 'admin_pt') {
-          renderAdminPTs(el);
+        } else if (tabId === 'admin_stats') {
+          renderMemberStatistics(el);
+        } else if (tabId === 'admin_receipts') {
+          renderReceiptLookup(el);
+        } else if (tabId === 'front_members') {
+          renderFrontDeskMembers(el);
+        } else if (tabId === 'front_sales') {
+          renderFrontDeskSales(el);
+        } else if (tabId === 'front_schedule') {
+          renderScheduleManagement(el);
         } else if (tabId === 'pt_members') {
           renderPTMembers(el);
         } else if (tabId === 'member_portal') {
@@ -1113,7 +1495,12 @@
       }
     }
 
+    // Kiểm tra năm chọn từ bộ lọc trước khi tính và vẽ lại báo cáo doanh thu.
     function setAdminRevenueYear(value) {
+      if (!currentUser || !['Admin', 'QuanLy'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền xem báo cáo doanh thu.', 'error');
+        return;
+      }
       const year = Number(value);
       if (!Number.isInteger(year) || year < 2000 || year > 2100) {
         showToast('Năm báo cáo không hợp lệ.', 'error');
@@ -1123,6 +1510,369 @@
       renderAdminRevenue(document.getElementById('mainContent'));
     }
 
+    // UC04-05: Quản trị viên xem tài khoản, tạo tài khoản nội bộ và gán vai trò theo quyền.
+    function renderAdminAccounts(el) {
+      document.getElementById('pageTitle').textContent = 'Tài khoản & phân quyền';
+      const accounts = DB.NguoiDung.slice().sort((a, b) => String(a.TenDangNhap).localeCompare(String(b.TenDangNhap)));
+      const roles = [
+        ['Admin', 'Quản trị viên'],
+        ['QuanLy', 'Quản lý phòng gym'],
+        ['LeTan', 'Nhân viên lễ tân'],
+        ['PT', 'Huấn luyện viên'],
+        ['HoiVien', 'Hội viên']
+      ];
+
+      el.innerHTML = `
+        <section class="rounded-3xl bg-gradient-to-r from-blue-950 to-blue-800 p-6 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-200">UC04 · UC05</p>
+          <h3 class="mt-2 text-2xl font-extrabold">Tài khoản và phân quyền</h3>
+          <p class="mt-2 text-sm text-blue-100">Tài khoản phải hoạt động mới đăng nhập được. Hệ thống luôn giữ ít nhất một quản trị viên đang hoạt động.</p>
+        </section>
+        <section class="grid gap-5 xl:grid-cols-[minmax(0,1.5fr)_minmax(300px,0.8fr)]">
+          <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-500"><tr><th class="p-4">Tài khoản</th><th class="p-4">Vai trò</th><th class="p-4">Trạng thái</th><th class="p-4">Thao tác</th></tr></thead>
+              <tbody class="divide-y divide-slate-100">
+                ${accounts.map(account => `
+                  <tr>
+                    <td class="p-4"><span class="font-semibold text-slate-900">${escapeHTML(account.TenDangNhap)}</span><span class="mt-1 block font-mono text-[10px] text-slate-400">${escapeHTML(account.MaND)}</span></td>
+                    <td class="p-4">
+                      <select onchange="setAccountRole('${escapeHTML(account.MaND)}', this.value)" class="rounded-lg border border-slate-300 p-2" ${account.DuLieuMau ? 'disabled title="Tài khoản mẫu không chỉnh sửa vai trò"' : ''}>
+                        ${roles.map(([role, label]) => `<option value="${role}" ${account.VaiTro === role ? 'selected' : ''}>${label}</option>`).join('')}
+                      </select>
+                    </td>
+                    <td class="p-4"><span class="rounded-full px-2.5 py-1 font-semibold ${account.TrangThaiTaiKhoan === 'NgungHoatDong' ? 'bg-slate-100 text-slate-500' : 'bg-emerald-50 text-emerald-700'}">${account.TrangThaiTaiKhoan === 'NgungHoatDong' ? 'Ngừng hoạt động' : 'Đang hoạt động'}</span></td>
+                    <td class="p-4"><button onclick="toggleAccountStatus('${escapeHTML(account.MaND)}')" class="rounded-lg border border-slate-200 px-3 py-2 font-semibold hover:bg-slate-50">${account.TrangThaiTaiKhoan === 'NgungHoatDong' ? 'Kích hoạt' : 'Ngừng'}</button></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+          <form onsubmit="createStaffAccount(event)" class="space-y-3 rounded-2xl border border-slate-200 bg-white p-5">
+            <h4 class="font-bold text-slate-900">Tạo tài khoản nội bộ</h4>
+            <p class="text-xs leading-5 text-slate-500">Tài khoản PT và hội viên cần tạo cùng hồ sơ, hãy dùng chức năng thêm PT hoặc đăng ký hội viên tương ứng.</p>
+            <label class="block text-xs font-semibold text-slate-600">Tên đăng nhập<input id="accountUsername" required class="mt-1 w-full rounded-xl border p-2.5 text-sm" /></label>
+            <label class="block text-xs font-semibold text-slate-600">Mật khẩu ban đầu<input id="accountPassword" type="password" minlength="6" required class="mt-1 w-full rounded-xl border p-2.5 text-sm" /></label>
+            <label class="block text-xs font-semibold text-slate-600">Vai trò
+              <select id="accountRole" class="mt-1 w-full rounded-xl border p-2.5 text-sm">
+                <option value="QuanLy">Quản lý phòng gym</option>
+                <option value="LeTan">Nhân viên lễ tân</option>
+                <option value="Admin">Quản trị viên</option>
+              </select>
+            </label>
+            <button type="submit" class="w-full rounded-xl bg-blue-700 px-4 py-3 text-xs font-bold text-white">Tạo tài khoản</button>
+          </form>
+        </section>
+      `;
+    }
+
+    function createStaffAccount(event) {
+      event.preventDefault();
+      if (!currentUser || currentUser.VaiTro !== 'Admin') {
+        showToast('Chỉ quản trị viên mới được tạo tài khoản nội bộ.', 'error');
+        return;
+      }
+      const username = document.getElementById('accountUsername').value.trim();
+      const password = document.getElementById('accountPassword').value;
+      const role = document.getElementById('accountRole').value;
+      if (DB.NguoiDung.some(item =>
+        typeof item.TenDangNhap === 'string' && item.TenDangNhap.toLowerCase() === username.toLowerCase()
+      )) {
+        showToast('Tên đăng nhập đã được sử dụng.', 'error');
+        return;
+      }
+      if (!['Admin', 'QuanLy', 'LeTan'].includes(role) || password.length < 6) {
+        showToast('Vai trò hoặc mật khẩu không hợp lệ.', 'error');
+        return;
+      }
+      const id = getNextRecordId('ND', DB.NguoiDung, 'MaND');
+      DB.NguoiDung.push({ MaND: id, TenDangNhap: username, MatKhau: password, VaiTro: role, TrangThaiTaiKhoan: 'HoatDong' });
+      saveDB();
+      showToast('Đã tạo tài khoản nội bộ.', 'success');
+      renderAdminAccounts(document.getElementById('mainContent'));
+    }
+
+    function setAccountRole(accountId, role) {
+      if (!currentUser || currentUser.VaiTro !== 'Admin') {
+        showToast('Chỉ quản trị viên mới được phân quyền tài khoản.', 'error');
+        return;
+      }
+      const account = DB.NguoiDung.find(item => item.MaND === accountId);
+      if (!account || !['Admin', 'QuanLy', 'LeTan', 'PT', 'HoiVien'].includes(role)) {
+        showToast('Tài khoản hoặc vai trò không hợp lệ.', 'error');
+        renderAdminAccounts(document.getElementById('mainContent'));
+        return;
+      }
+      if (account.DuLieuMau || (role === 'PT' && !DB.NhanVien_PT.some(item => item.MaNV === accountId)) ||
+          (role === 'HoiVien' && !DB.HoiVien.some(item => item.MaHoiVien === accountId))) {
+        showToast('Không thể gán vai trò này cho tài khoản mẫu hoặc tài khoản chưa có hồ sơ liên quan.', 'error');
+        renderAdminAccounts(document.getElementById('mainContent'));
+        return;
+      }
+      if (account.VaiTro === 'Admin' && role !== 'Admin' &&
+          account.TrangThaiTaiKhoan === 'HoatDong' &&
+          DB.NguoiDung.filter(item => item.VaiTro === 'Admin' && item.TrangThaiTaiKhoan === 'HoatDong').length <= 1) {
+        showToast('Hệ thống phải luôn có ít nhất một quản trị viên đang hoạt động.', 'error');
+        renderAdminAccounts(document.getElementById('mainContent'));
+        return;
+      }
+      account.VaiTro = role;
+      saveDB();
+      showToast('Đã cập nhật vai trò tài khoản.', 'success');
+      renderAdminAccounts(document.getElementById('mainContent'));
+    }
+
+    function toggleAccountStatus(accountId) {
+      if (!currentUser || currentUser.VaiTro !== 'Admin') {
+        showToast('Chỉ quản trị viên mới được thay đổi trạng thái tài khoản.', 'error');
+        return;
+      }
+      const account = DB.NguoiDung.find(item => item.MaND === accountId);
+      if (!account) {
+        showToast('Không tìm thấy tài khoản.', 'error');
+        return;
+      }
+      const deactivate = account.TrangThaiTaiKhoan !== 'NgungHoatDong';
+      if (deactivate && account.VaiTro === 'Admin' &&
+          DB.NguoiDung.filter(item => item.VaiTro === 'Admin' && item.TrangThaiTaiKhoan === 'HoatDong').length <= 1) {
+        showToast('Không thể ngừng quản trị viên cuối cùng đang hoạt động.', 'error');
+        return;
+      }
+      account.TrangThaiTaiKhoan = deactivate ? 'NgungHoatDong' : 'HoatDong';
+      const trainer = DB.NhanVien_PT.find(item => item.MaNV === accountId);
+      if (trainer) trainer.TrangThai = account.TrangThaiTaiKhoan;
+      const member = DB.HoiVien.find(item => item.MaHoiVien === accountId);
+      if (member) member.TrangThai = account.TrangThaiTaiKhoan;
+      saveDB();
+      showToast(deactivate ? 'Đã ngừng tài khoản.' : 'Đã kích hoạt tài khoản.', 'success');
+      renderAdminAccounts(document.getElementById('mainContent'));
+    }
+
+    // UC07: Quản lý gói mở bán; gói đã được dùng chỉ được ngừng bán, không xóa lịch sử.
+    function renderPackageManagement(el) {
+      document.getElementById('pageTitle').textContent = 'Quản lý gói tập';
+      el.innerHTML = `
+        <section class="rounded-3xl bg-gradient-to-r from-blue-950 to-blue-800 p-6 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-200">UC07 · Gói tập</p>
+          <h3 class="mt-2 text-2xl font-extrabold">Danh mục gói tập</h3>
+          <p class="mt-2 text-sm text-blue-100">Chỉ gói đang mở bán mới được đăng ký. Ngừng bán không xóa các đăng ký và phiếu thu trước đây.</p>
+        </section>
+        <section class="grid gap-5 xl:grid-cols-[minmax(0,1.4fr)_minmax(300px,0.8fr)]">
+          <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-500"><tr><th class="p-4">Gói</th><th class="p-4">Giá / ngày</th><th class="p-4">PT</th><th class="p-4">Trạng thái</th><th class="p-4">Thao tác</th></tr></thead>
+              <tbody class="divide-y divide-slate-100">
+                ${DB.GoiTap.map(pkg => `
+                  <tr>
+                    <td class="p-4"><b>${escapeHTML(pkg.TenGoi)}</b><span class="mt-1 block text-slate-500">${escapeHTML(pkg.MoTa || '')}</span></td>
+                    <td class="p-4">${formatMoney(pkg.GiaTien)}<span class="block text-slate-500">${pkg.ThoiHan} ngày</span></td>
+                    <td class="p-4">${pkg.CoPT ? 'Có' : 'Không'}</td>
+                    <td class="p-4">${pkg.TrangThai === 'DangCungCap' ? 'Đang mở bán' : 'Ngừng bán'}</td>
+                    <td class="p-4"><div class="flex gap-2"><button onclick="editPackage('${escapeHTML(pkg.MaGoi)}')" class="rounded-lg bg-blue-50 px-3 py-2 font-semibold text-blue-700">Sửa</button><button onclick="togglePackageStatus('${escapeHTML(pkg.MaGoi)}')" class="rounded-lg bg-slate-100 px-3 py-2 font-semibold">${pkg.TrangThai === 'DangCungCap' ? 'Ngừng bán' : 'Mở bán'}</button></div></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+          <form id="packageEditorForm" onsubmit="savePackage(event)" class="space-y-3 rounded-2xl border border-slate-200 bg-white p-5">
+            <h4 id="packageFormTitle" class="font-bold text-slate-900">Thêm gói tập</h4>
+            <label class="block text-xs font-semibold text-slate-600">Tên gói<input id="packageName" required class="mt-1 w-full rounded-xl border p-2.5 text-sm" /></label>
+            <label class="block text-xs font-semibold text-slate-600">Mô tả<textarea id="packageDescription" required rows="3" class="mt-1 w-full rounded-xl border p-2.5 text-sm"></textarea></label>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="block text-xs font-semibold text-slate-600">Giá (VNĐ)<input id="packagePrice" type="number" min="1" required class="mt-1 w-full rounded-xl border p-2.5 text-sm" /></label>
+              <label class="block text-xs font-semibold text-slate-600">Thời hạn (ngày)<input id="packageDuration" type="number" min="1" required class="mt-1 w-full rounded-xl border p-2.5 text-sm" /></label>
+            </div>
+            <label class="flex items-center gap-2 text-xs font-semibold text-slate-700"><input id="packageHasPT" type="checkbox" class="accent-blue-700" /> Bao gồm PT cá nhân</label>
+            <div class="flex gap-2">
+              <button type="submit" class="flex-1 rounded-xl bg-blue-700 px-4 py-3 text-xs font-bold text-white">Lưu gói</button>
+              <button type="button" onclick="resetPackageEditor()" class="rounded-xl border px-4 py-3 text-xs font-semibold">Làm mới</button>
+            </div>
+          </form>
+        </section>
+      `;
+      editingPackageId = null;
+    }
+
+    function savePackage(event) {
+      event.preventDefault();
+      if (!currentUser || !['Admin', 'QuanLy'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền cập nhật gói tập.', 'error');
+        return;
+      }
+      const name = document.getElementById('packageName').value.trim();
+      const description = document.getElementById('packageDescription').value.trim();
+      const price = Number(document.getElementById('packagePrice').value);
+      const duration = Number(document.getElementById('packageDuration').value);
+      const hasPT = document.getElementById('packageHasPT').checked;
+      if (!name || !description || !Number.isFinite(price) || price <= 0 ||
+          !Number.isInteger(duration) || duration <= 0) {
+        showToast('Vui lòng nhập tên, mô tả, giá và thời hạn hợp lệ.', 'error');
+        return;
+      }
+      if (editingPackageId) {
+        const pkg = DB.GoiTap.find(item => item.MaGoi === editingPackageId);
+        if (!pkg) {
+          showToast('Không tìm thấy gói cần cập nhật.', 'error');
+          renderPackageManagement(document.getElementById('mainContent'));
+          return;
+        }
+        Object.assign(pkg, { TenGoi: name, MoTa: description, GiaTien: price, ThoiHan: duration, CoPT: hasPT });
+      } else {
+        const id = 'GOI' + String(DB.GoiTap.length + 1).padStart(2, '0');
+        if (DB.GoiTap.some(item => item.MaGoi === id)) {
+          showToast('Không thể tạo mã gói duy nhất; hãy kiểm tra dữ liệu hiện có.', 'error');
+          return;
+        }
+        DB.GoiTap.push({ MaGoi: id, TenGoi: name, MoTa: description, GiaTien: price, ThoiHan: duration, CoPT: hasPT, TrangThai: 'DangCungCap' });
+      }
+      saveDB();
+      showToast('Đã lưu thông tin gói tập.', 'success');
+      renderPackageManagement(document.getElementById('mainContent'));
+      renderPublicPackages();
+    }
+
+    function editPackage(packageId) {
+      const pkg = DB.GoiTap.find(item => item.MaGoi === packageId);
+      if (!pkg) {
+        showToast('Không tìm thấy gói tập.', 'error');
+        return;
+      }
+      editingPackageId = pkg.MaGoi;
+      document.getElementById('packageName').value = pkg.TenGoi;
+      document.getElementById('packageDescription').value = pkg.MoTa;
+      document.getElementById('packagePrice').value = pkg.GiaTien;
+      document.getElementById('packageDuration').value = pkg.ThoiHan;
+      document.getElementById('packageHasPT').checked = Boolean(pkg.CoPT);
+      document.getElementById('packageFormTitle').textContent = 'Cập nhật gói tập';
+      document.getElementById('packageEditorForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function resetPackageEditor() {
+      editingPackageId = null;
+      document.getElementById('packageEditorForm').reset();
+      document.getElementById('packageFormTitle').textContent = 'Thêm gói tập';
+    }
+
+    function togglePackageStatus(packageId) {
+      if (!currentUser || !['Admin', 'QuanLy'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền thay đổi trạng thái gói tập.', 'error');
+        return;
+      }
+      const pkg = DB.GoiTap.find(item => item.MaGoi === packageId);
+      if (!pkg) {
+        showToast('Không tìm thấy gói tập.', 'error');
+        return;
+      }
+      pkg.TrangThai = pkg.TrangThai === 'DangCungCap' ? 'NgungCungCap' : 'DangCungCap';
+      saveDB();
+      showToast(pkg.TrangThai === 'DangCungCap' ? 'Đã mở bán gói.' : 'Đã ngừng bán gói.', 'success');
+      renderPackageManagement(document.getElementById('mainContent'));
+      renderPublicPackages();
+    }
+
+    // UC18: Tổng hợp số hội viên, gói còn hạn, hết hạn và cơ cấu hội viên theo gói.
+    function renderMemberStatistics(el) {
+      document.getElementById('pageTitle').textContent = 'Thống kê hội viên';
+      const today = formatDate(new Date());
+      const rows = DB.HoiVien.map(member => {
+        const subscription = getLatestSubscription(member.MaHoiVien);
+        const active = Boolean(subscription && subscription.TrangThaiDangKy === 'KichHoat' &&
+          subscription.NgayBatDau <= today && subscription.NgayHetHan >= today);
+        return { member, subscription, active };
+      });
+      const packageCounts = DB.GoiTap.map(pkg => ({
+        pkg,
+        count: rows.filter(row => row.active && row.subscription.MaGoi === pkg.MaGoi).length
+      }));
+      const activeCount = rows.filter(row => row.active).length;
+      const expiredCount = rows.filter(row => row.subscription && !row.active).length;
+      el.innerHTML = `
+        <section class="rounded-3xl bg-gradient-to-r from-blue-950 to-blue-800 p-6 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-200">UC18 · Thống kê</p>
+          <h3 class="mt-2 text-2xl font-extrabold">Tình hình hội viên</h3>
+        </section>
+        <section class="grid gap-4 sm:grid-cols-3">
+          <article class="rounded-2xl border bg-white p-5"><p class="text-xs text-slate-500">TỔNG HỘI VIÊN</p><p class="mt-2 text-3xl font-extrabold">${rows.length}</p></article>
+          <article class="rounded-2xl border bg-white p-5"><p class="text-xs text-slate-500">GÓI ĐANG HIỆU LỰC</p><p class="mt-2 text-3xl font-extrabold text-emerald-700">${activeCount}</p></article>
+          <article class="rounded-2xl border bg-white p-5"><p class="text-xs text-slate-500">CHƯA CÓ / ĐÃ HẾT HẠN</p><p class="mt-2 text-3xl font-extrabold text-amber-700">${rows.length - activeCount}</p><p class="mt-1 text-[11px] text-slate-500">${expiredCount} đã từng đăng ký</p></article>
+        </section>
+        <section class="rounded-2xl border bg-white p-5">
+          <h4 class="font-bold text-slate-900">Hội viên đang hoạt động theo gói</h4>
+          <div class="mt-4 space-y-3">
+            ${packageCounts.map(({ pkg, count }) => `
+              <div>
+                <div class="mb-1 flex justify-between gap-3 text-xs"><span>${escapeHTML(pkg.TenGoi)}</span><b>${count}</b></div>
+                <div class="h-2 overflow-hidden rounded-full bg-slate-100"><div class="h-full rounded-full bg-blue-600" style="width:${activeCount ? count / activeCount * 100 : 0}%"></div></div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    // UC12: Tìm phiếu thu theo mã phiếu, mã giao dịch, tên hội viên hoặc số điện thoại.
+    function renderReceiptLookup(el) {
+      document.getElementById('pageTitle').textContent = 'Tra cứu phiếu thu';
+      const query = receiptSearchQuery.trim().toLowerCase();
+      const receipts = DB.PhieuThu.slice().reverse().filter(receipt => {
+        if (!query) return true;
+        const member = DB.HoiVien.find(item => item.MaHoiVien === receipt.MaHoiVien);
+        return [receipt.MaPhieuThu, receipt.MaGiaoDich, receipt.MaHoiVien, member && member.HoTen, member && member.SoDienThoai]
+          .some(value => String(value || '').toLowerCase().includes(query));
+      });
+      el.innerHTML = `
+        <section class="rounded-3xl bg-gradient-to-r from-blue-950 to-blue-800 p-6 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-200">UC12 · Phiếu thu</p>
+          <h3 class="mt-2 text-2xl font-extrabold">Tra cứu hóa đơn đã thanh toán</h3>
+        </section>
+        <form onsubmit="searchReceipts(event)" class="flex flex-col gap-2 rounded-2xl border bg-white p-4 sm:flex-row">
+          <input id="receiptSearchInput" value="${escapeHTML(receiptSearchQuery)}" class="min-w-0 flex-1 rounded-xl border p-3 text-sm" placeholder="Mã phiếu, mã giao dịch, tên hoặc số điện thoại" />
+          <button class="rounded-xl bg-blue-700 px-5 py-3 text-xs font-bold text-white">Tìm kiếm</button>
+          <button type="button" onclick="clearReceiptSearch()" class="rounded-xl border px-4 py-3 text-xs font-semibold">Xóa lọc</button>
+        </form>
+        <section class="overflow-x-auto rounded-2xl border bg-white">
+          ${receipts.length ? `
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-500"><tr><th class="p-4">Mã phiếu</th><th class="p-4">Hội viên</th><th class="p-4">Ngày lập</th><th class="p-4">Số tiền</th><th class="p-4">Thao tác</th></tr></thead>
+              <tbody class="divide-y divide-slate-100">
+                ${receipts.map(receipt => {
+                  const member = DB.HoiVien.find(item => item.MaHoiVien === receipt.MaHoiVien);
+                  return `<tr><td class="p-4 font-mono">${escapeHTML(receipt.MaPhieuThu)}</td><td class="p-4">${escapeHTML(member ? member.HoTen : receipt.MaHoiVien)}</td><td class="p-4">${new Date(receipt.NgayLap).toLocaleString('vi-VN')}</td><td class="p-4 font-bold">${formatMoney(receipt.SoTien)}</td><td class="p-4"><button onclick="openReceipt('${escapeHTML(receipt.MaPhieuThu)}')" class="rounded-lg bg-blue-50 px-3 py-2 font-semibold text-blue-700">Xem / in</button></td></tr>`;
+                }).join('')}
+              </tbody>
+            </table>
+          ` : '<p class="p-6 text-sm text-slate-500">Không tìm thấy phiếu thu phù hợp.</p>'}
+        </section>
+      `;
+    }
+
+    function searchReceipts(event) {
+      event.preventDefault();
+      receiptSearchQuery = document.getElementById('receiptSearchInput').value;
+      renderReceiptLookup(document.getElementById('mainContent'));
+    }
+
+    function clearReceiptSearch() {
+      receiptSearchQuery = '';
+      renderReceiptLookup(document.getElementById('mainContent'));
+    }
+
+    function openReceipt(receiptId) {
+      if (!currentUser || !['Admin', 'QuanLy', 'LeTan'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền tra cứu phiếu thu.', 'error');
+        return;
+      }
+      const receipt = DB.PhieuThu.find(item => item.MaPhieuThu === receiptId);
+      if (!receipt) {
+        showToast('Không tìm thấy phiếu thu.', 'error');
+        return;
+      }
+      renderBill(receipt);
+      openModal('billModal');
+    }
+
+    // UC17: Báo cáo doanh thu loại trừ giao dịch mẫu; số liệu minh họa được gắn nhãn riêng.
+    // Phần hiển thị gồm chỉ số tổng hợp, cột theo tháng và các giao dịch thành công gần đây.
     function renderAdminRevenue(el) {
       document.getElementById('pageTitle').textContent = 'Báo Cáo Doanh Thu';
       const monthNames = ['Th1', 'Th2', 'Th3', 'Th4', 'Th5', 'Th6', 'Th7', 'Th8', 'Th9', 'Th10', 'Th11', 'Th12'];
@@ -1239,6 +1989,446 @@
       `;
     }
 
+    // UC08: Lễ tân tìm, thêm và cập nhật hồ sơ hội viên; tài khoản đăng nhập được tạo cùng hồ sơ.
+    function renderFrontDeskMembers(el) {
+      document.getElementById('pageTitle').textContent = 'Quản lý hội viên';
+      const members = DB.HoiVien.slice().sort((a, b) => String(a.HoTen).localeCompare(String(b.HoTen)));
+      el.innerHTML = `
+        <section class="rounded-3xl bg-gradient-to-r from-blue-950 to-blue-800 p-6 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-200">UC08 · Hồ sơ hội viên</p>
+          <h3 class="mt-2 text-2xl font-extrabold">Tiếp nhận và cập nhật hội viên</h3>
+          <p class="mt-2 text-sm text-blue-100">Thông tin hồ sơ và tài khoản được lưu cùng mã hội viên để tra cứu thống nhất.</p>
+        </section>
+        <section class="grid gap-5 xl:grid-cols-[minmax(0,1.4fr)_minmax(300px,0.8fr)]">
+          <div class="overflow-x-auto rounded-2xl border bg-white">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-500"><tr><th class="p-4">Họ tên / mã</th><th class="p-4">Số điện thoại</th><th class="p-4">Trạng thái</th><th class="p-4">Thao tác</th></tr></thead>
+              <tbody class="divide-y divide-slate-100">
+                ${members.map(member => `
+                  <tr>
+                    <td class="p-4"><b>${escapeHTML(member.HoTen)}</b><span class="mt-1 block font-mono text-slate-400">${escapeHTML(member.MaHoiVien)}</span></td>
+                    <td class="p-4">${escapeHTML(member.SoDienThoai || '—')}</td>
+                    <td class="p-4">${member.TrangThai === 'NgungHoatDong' ? 'Ngừng hoạt động' : 'Đang hoạt động'}</td>
+                    <td class="p-4"><div class="flex gap-2"><button onclick="editMemberProfile('${escapeHTML(member.MaHoiVien)}')" class="rounded-lg bg-blue-50 px-3 py-2 font-semibold text-blue-700">Sửa hồ sơ</button><button onclick="toggleMemberStatus('${escapeHTML(member.MaHoiVien)}')" class="rounded-lg ${member.TrangThai === 'NgungHoatDong' ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'} px-3 py-2 font-semibold">${member.TrangThai === 'NgungHoatDong' ? 'Kích hoạt' : 'Ngừng'}</button></div></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+          <form id="memberEditorForm" onsubmit="saveFrontDeskMember(event)" class="space-y-3 rounded-2xl border bg-white p-5">
+            <h4 id="memberFormTitle" class="font-bold text-slate-900">Thêm hội viên</h4>
+            <label class="block text-xs font-semibold text-slate-600">Họ và tên<input id="staffMemberName" required class="mt-1 w-full rounded-xl border p-2.5 text-sm" /></label>
+            <label class="block text-xs font-semibold text-slate-600">Số điện thoại<input id="staffMemberPhone" type="tel" required class="mt-1 w-full rounded-xl border p-2.5 text-sm" /></label>
+            <div id="memberLoginFields" class="space-y-3">
+              <label class="block text-xs font-semibold text-slate-600">Tên đăng nhập<input id="staffMemberUsername" required class="mt-1 w-full rounded-xl border p-2.5 text-sm" /></label>
+              <label class="block text-xs font-semibold text-slate-600">Mật khẩu ban đầu<input id="staffMemberPassword" type="password" minlength="6" required class="mt-1 w-full rounded-xl border p-2.5 text-sm" /></label>
+            </div>
+            <div class="flex gap-2"><button type="submit" class="flex-1 rounded-xl bg-blue-700 px-4 py-3 text-xs font-bold text-white">Lưu hội viên</button><button type="button" onclick="resetMemberEditor()" class="rounded-xl border px-4 py-3 text-xs font-semibold">Làm mới</button></div>
+          </form>
+        </section>
+      `;
+      editingMemberId = null;
+    }
+
+    function getNextRecordId(prefix, rows, key) {
+      let next = rows.length + 1;
+      let id = `${prefix}${String(next).padStart(3, '0')}`;
+      while (rows.some(item => item[key] === id)) {
+        next += 1;
+        id = `${prefix}${String(next).padStart(3, '0')}`;
+      }
+      return id;
+    }
+
+    function saveFrontDeskMember(event) {
+      event.preventDefault();
+      if (!currentUser || !['Admin', 'LeTan'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền cập nhật hồ sơ hội viên.', 'error');
+        return;
+      }
+      const name = document.getElementById('staffMemberName').value.trim();
+      const phone = document.getElementById('staffMemberPhone').value.trim();
+      const member = editingMemberId
+        ? DB.HoiVien.find(item => item.MaHoiVien === editingMemberId)
+        : null;
+      if (!name || !phone || (editingMemberId && !member)) {
+        showToast('Vui lòng nhập thông tin hợp lệ cho hội viên.', 'error');
+        return;
+      }
+      if (DB.HoiVien.some(item => item.SoDienThoai === phone && item.MaHoiVien !== editingMemberId)) {
+        showToast('Số điện thoại này đã được dùng cho hội viên khác.', 'error');
+        return;
+      }
+      if (member) {
+        member.HoTen = name;
+        member.SoDienThoai = phone;
+      } else {
+        const username = document.getElementById('staffMemberUsername').value.trim();
+        const password = document.getElementById('staffMemberPassword').value;
+        if (!username || password.length < 6 ||
+            DB.NguoiDung.some(item =>
+              typeof item.TenDangNhap === 'string' && item.TenDangNhap.toLowerCase() === username.toLowerCase()
+            )) {
+          showToast('Tên đăng nhập đã tồn tại hoặc mật khẩu chưa đủ 6 ký tự.', 'error');
+          return;
+        }
+        const memberId = getNextRecordId('HV', DB.HoiVien, 'MaHoiVien');
+        DB.HoiVien.push({ MaHoiVien: memberId, HoTen: name, SoDienThoai: phone, NgayDangKy: formatDate(new Date()), TrangThai: 'HoatDong' });
+        DB.NguoiDung.push({ MaND: memberId, TenDangNhap: username, MatKhau: password, VaiTro: 'HoiVien', TrangThaiTaiKhoan: 'HoatDong' });
+      }
+      saveDB();
+      showToast(member ? 'Đã cập nhật hồ sơ hội viên.' : 'Đã tạo hồ sơ và tài khoản hội viên.', 'success');
+      renderFrontDeskMembers(document.getElementById('mainContent'));
+    }
+
+    function editMemberProfile(memberId) {
+      const member = DB.HoiVien.find(item => item.MaHoiVien === memberId);
+      if (!member) {
+        showToast('Không tìm thấy hội viên.', 'error');
+        return;
+      }
+      editingMemberId = memberId;
+      document.getElementById('staffMemberName').value = member.HoTen || '';
+      document.getElementById('staffMemberPhone').value = member.SoDienThoai || '';
+      document.getElementById('memberFormTitle').textContent = 'Cập nhật hội viên';
+      document.getElementById('memberLoginFields').classList.add('hidden');
+      document.getElementById('staffMemberUsername').required = false;
+      document.getElementById('staffMemberPassword').required = false;
+      document.getElementById('memberEditorForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function resetMemberEditor() {
+      editingMemberId = null;
+      document.getElementById('memberEditorForm').reset();
+      document.getElementById('memberFormTitle').textContent = 'Thêm hội viên';
+      document.getElementById('memberLoginFields').classList.remove('hidden');
+      document.getElementById('staffMemberUsername').required = true;
+      document.getElementById('staffMemberPassword').required = true;
+    }
+
+    function toggleMemberStatus(memberId) {
+      if (!currentUser || !['Admin', 'LeTan'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền thay đổi trạng thái hội viên.', 'error');
+        return;
+      }
+      const member = DB.HoiVien.find(item => item.MaHoiVien === memberId);
+      const account = DB.NguoiDung.find(item => item.MaND === memberId);
+      if (!member || !account) {
+        showToast('Không tìm thấy hồ sơ hoặc tài khoản hội viên.', 'error');
+        return;
+      }
+      const activate = member.TrangThai === 'NgungHoatDong';
+      member.TrangThai = activate ? 'HoatDong' : 'NgungHoatDong';
+      account.TrangThaiTaiKhoan = member.TrangThai;
+      saveDB();
+      showToast(activate ? 'Đã kích hoạt lại hội viên.' : 'Đã ngừng hoạt động hội viên.', 'success');
+      renderFrontDeskMembers(document.getElementById('mainContent'));
+    }
+
+    // UC08-11: Lễ tân lập giao dịch đăng ký mới, gia hạn hoặc đổi gói trước khi thu tiền.
+    function renderFrontDeskSales(el) {
+      document.getElementById('pageTitle').textContent = 'Đăng ký, gia hạn và đổi gói';
+      const members = DB.HoiVien.filter(member => member.TrangThai !== 'NgungHoatDong');
+      const pending = DB.DangKyGoi.filter(item => item.TrangThaiDangKy === 'ChoThanhToan');
+      el.innerHTML = `
+        <section class="rounded-3xl bg-gradient-to-r from-blue-950 to-blue-800 p-6 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-200">UC08 · UC09 · UC10 · UC11</p>
+          <h3 class="mt-2 text-2xl font-extrabold">Nghiệp vụ gói tập</h3>
+          <p class="mt-2 text-sm text-blue-100">Chọn hội viên, loại nghiệp vụ và gói đang mở bán. Chỉ xác nhận sau khi nhận được kết quả thanh toán.</p>
+        </section>
+        <form onsubmit="startFrontDeskSale(event)" class="grid gap-4 rounded-2xl border bg-white p-5 md:grid-cols-2">
+          <label class="text-xs font-semibold text-slate-600">Hội viên<select id="saleMember" required class="mt-1 w-full rounded-xl border p-3 text-sm"><option value="">Chọn hội viên</option>${members.map(member => `<option value="${escapeHTML(member.MaHoiVien)}">${escapeHTML(member.HoTen)} · ${escapeHTML(member.SoDienThoai)}</option>`).join('')}</select></label>
+          <label class="text-xs font-semibold text-slate-600">Nghiệp vụ<select id="saleType" required class="mt-1 w-full rounded-xl border p-3 text-sm"><option value="DangKyMoi">Đăng ký mới</option><option value="GiaHan">Gia hạn</option><option value="DoiGoi">Đổi gói</option></select></label>
+          <label class="text-xs font-semibold text-slate-600 md:col-span-2">Gói đang mở bán<select id="salePackage" required class="mt-1 w-full rounded-xl border p-3 text-sm"><option value="">Chọn gói</option>${DB.GoiTap.filter(pkg => pkg.TrangThai === 'DangCungCap').map(pkg => `<option value="${escapeHTML(pkg.MaGoi)}">${escapeHTML(pkg.TenGoi)} · ${formatMoney(pkg.GiaTien)} / ${pkg.ThoiHan} ngày${pkg.CoPT ? ' · Có PT' : ''}</option>`).join('')}</select></label>
+          <p class="text-[11px] leading-5 text-amber-800 md:col-span-2">Đăng ký mới không áp dụng khi hội viên còn gói hiệu lực. Gia hạn nối tiếp sau ngày hết hạn hiện tại; đổi gói thay thế gói đang hoạt động sau khi thanh toán thành công.</p>
+          <button type="submit" class="rounded-xl bg-blue-700 px-5 py-3 text-xs font-bold text-white md:col-span-2">Kiểm tra điều kiện và chuyển thanh toán</button>
+        </form>
+        <section class="overflow-x-auto rounded-2xl border bg-white">
+          <div class="border-b p-4"><h4 class="font-bold">Giao dịch chờ thanh toán</h4><p class="mt-1 text-xs text-slate-500">Có thể mở lại QR hoặc hủy yêu cầu chưa thanh toán.</p></div>
+          ${pending.length ? `<table class="w-full text-left text-xs"><thead class="bg-slate-50 text-slate-500"><tr><th class="p-4">Hội viên</th><th class="p-4">Gói / nghiệp vụ</th><th class="p-4">Số tiền</th><th class="p-4">Thao tác</th></tr></thead><tbody class="divide-y">${pending.map(item => {
+            const member = DB.HoiVien.find(row => row.MaHoiVien === item.MaHoiVien);
+            const pkg = DB.GoiTap.find(row => row.MaGoi === item.MaGoi);
+            return `<tr><td class="p-4">${escapeHTML(member ? member.HoTen : item.MaHoiVien)}</td><td class="p-4">${escapeHTML(pkg ? pkg.TenGoi : item.MaGoi)} · ${escapeHTML(item.LoaiNghiepVu || 'DangKyMoi')}</td><td class="p-4">${formatMoney(pkg ? pkg.GiaTien : 0)}</td><td class="p-4"><button onclick="retryPendingSale('${escapeHTML(item.MaDangKy)}')" class="rounded-lg bg-blue-50 px-3 py-2 font-semibold text-blue-700">Mở QR</button> <button onclick="cancelPendingSale('${escapeHTML(item.MaDangKy)}')" class="rounded-lg bg-rose-50 px-3 py-2 font-semibold text-rose-700">Hủy</button></td></tr>`;
+          }).join('')}</tbody></table>` : '<p class="p-5 text-sm text-slate-500">Không có đăng ký chờ thanh toán.</p>'}
+        </section>
+      `;
+    }
+
+    function startFrontDeskSale(event) {
+      event.preventDefault();
+      if (!currentUser || !['Admin', 'LeTan'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền lập giao dịch hội viên.', 'error');
+        return;
+      }
+      const memberId = document.getElementById('saleMember').value;
+      const packageId = document.getElementById('salePackage').value;
+      const saleType = document.getElementById('saleType').value;
+      const memberAccount = DB.NguoiDung.find(item => item.MaND === memberId);
+      const member = DB.HoiVien.find(item => item.MaHoiVien === memberId && item.TrangThai !== 'NgungHoatDong');
+      const pkg = DB.GoiTap.find(item => item.MaGoi === packageId && item.TrangThai === 'DangCungCap');
+      if (!member || !memberAccount || memberAccount.TrangThaiTaiKhoan === 'NgungHoatDong' || !pkg) {
+        showToast('Hội viên phải có tài khoản hoạt động và gói phải đang mở bán.', 'error');
+        return;
+      }
+      const today = formatDate(new Date());
+      const activeSubscription = DB.DangKyGoi.slice().reverse().find(item =>
+        item.MaHoiVien === memberId && item.TrangThaiDangKy === 'KichHoat' &&
+        item.NgayBatDau <= today && item.NgayHetHan >= today
+      );
+      const previousSubscription = DB.DangKyGoi.slice().reverse().find(item =>
+        item.MaHoiVien === memberId && ['KichHoat', 'DaThayThe'].includes(item.TrangThaiDangKy)
+      );
+      if (saleType === 'DangKyMoi' && activeSubscription) {
+        showToast('Hội viên đang có gói hiệu lực. Hãy chọn gia hạn hoặc đổi gói.', 'error');
+        return;
+      }
+      if (saleType === 'GiaHan' && (!previousSubscription || previousSubscription.MaGoi !== packageId)) {
+        showToast('Chưa có gói cũ để gia hạn; hãy chọn đăng ký mới.', 'error');
+        return;
+      }
+      if (saleType === 'DoiGoi' && (!activeSubscription || activeSubscription.MaGoi === packageId)) {
+        showToast('Đổi gói cần một gói đang hiệu lực và gói mới phải khác gói hiện tại.', 'error');
+        return;
+      }
+      const trainer = getTrainerForSale(
+        pkg,
+        saleType === 'GiaHan' ? previousSubscription : activeSubscription
+      );
+      if (pkg.CoPT && !trainer) {
+        showToast('Không có PT hoạt động để nhận hội viên gói này.', 'error');
+        return;
+      }
+      if (!['DangKyMoi', 'GiaHan', 'DoiGoi'].includes(saleType)) {
+        showToast('Loại nghiệp vụ không hợp lệ.', 'error');
+        return;
+      }
+      const existingPending = DB.DangKyGoi.find(item =>
+        item.MaHoiVien === memberId && item.TrangThaiDangKy === 'ChoThanhToan'
+      );
+      if (existingPending) existingPending.TrangThaiDangKy = 'DaHuy';
+      pendingPkg = pkg;
+      pendingSaleType = saleType;
+      pendingRegistration = {
+        MaDangKy: getNextRecordId('DK', DB.DangKyGoi, 'MaDangKy'),
+        MaHoiVien: memberId,
+        MaGoi: pkg.MaGoi,
+        MaPT: trainer ? trainer.MaNV : null,
+        MaDangKyCu: saleType === 'GiaHan'
+          ? previousSubscription.MaDangKy
+          : (activeSubscription ? activeSubscription.MaDangKy : null),
+        NguoiLap: currentUser.MaND,
+        NgayDangKy: today,
+        NgayBatDau: null,
+        NgayHetHan: null,
+        LoaiNghiepVu: saleType,
+        TrangThaiDangKy: 'ChoThanhToan'
+      };
+      DB.DangKyGoi.push(pendingRegistration);
+      saveDB();
+      openPendingSaleQR();
+    }
+
+    function openPendingSaleQR() {
+      if (!pendingRegistration || !pendingPkg) {
+        showToast('Không có giao dịch đang chờ thanh toán.', 'error');
+        return;
+      }
+      document.getElementById('qrImage').src = 'payment-qr.png';
+      document.getElementById('qrAmountText').textContent = formatMoney(pendingPkg.GiaTien);
+      closeModal('packageRegisterModal');
+      openModal('qrModal');
+    }
+
+    function retryPendingSale(registrationId) {
+      if (!currentUser || !['Admin', 'LeTan'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền mở lại giao dịch.', 'error');
+        return;
+      }
+      const registration = DB.DangKyGoi.find(item =>
+        item.MaDangKy === registrationId && item.TrangThaiDangKy === 'ChoThanhToan'
+      );
+      const pkg = registration && DB.GoiTap.find(item =>
+        item.MaGoi === registration.MaGoi && item.TrangThai === 'DangCungCap'
+      );
+      if (!registration || !pkg) {
+        showToast('Đăng ký không còn hợp lệ hoặc gói đã ngừng bán.', 'error');
+        return;
+      }
+      pendingRegistration = registration;
+      pendingPkg = pkg;
+      pendingSaleType = registration.LoaiNghiepVu || 'DangKyMoi';
+      openPendingSaleQR();
+    }
+
+    function cancelPendingSale(registrationId) {
+      if (!currentUser || !['Admin', 'LeTan'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền hủy đăng ký.', 'error');
+        return;
+      }
+      const registration = DB.DangKyGoi.find(item =>
+        item.MaDangKy === registrationId && item.TrangThaiDangKy === 'ChoThanhToan'
+      );
+      if (!registration) {
+        showToast('Không tìm thấy đăng ký chờ hủy.', 'error');
+        return;
+      }
+      registration.TrangThaiDangKy = 'DaHuy';
+      saveDB();
+      pendingRegistration = null;
+      pendingPkg = null;
+      showToast('Đã hủy đăng ký chưa thanh toán.', 'info');
+      renderFrontDeskSales(document.getElementById('mainContent'));
+    }
+
+    let editingMemberId = null;
+
+    // UC14: Quản lý lịch tập; kiểm tra hiệu lực gói và tránh trùng lịch hội viên/PT.
+    function renderScheduleManagement(el) {
+      document.getElementById('pageTitle').textContent = 'Quản lý lịch tập';
+      const members = DB.HoiVien.filter(member => member.TrangThai !== 'NgungHoatDong');
+      const trainers = DB.NhanVien_PT.filter(trainer => trainer.TrangThai === 'HoatDong');
+      const sessions = DB.LichTap.slice().sort((a, b) =>
+        String(a.NgayTap).localeCompare(String(b.NgayTap)) ||
+        String(a.GioBatDau).localeCompare(String(b.GioBatDau))
+      );
+      el.innerHTML = `
+        <section class="rounded-3xl bg-gradient-to-r from-blue-950 to-blue-800 p-6 text-white">
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-200">UC14 · Xếp lịch</p>
+          <h3 class="mt-2 text-2xl font-extrabold">Sắp xếp thời khóa biểu tập luyện</h3>
+          <p class="mt-2 text-sm text-blue-100">Giờ tập hợp lệ: 05:00-07:00 hoặc 16:00-20:00. Hệ thống từ chối nếu gói chưa hiệu lực hoặc PT/hội viên bị trùng lịch.</p>
+        </section>
+        <form onsubmit="createManagedSession(event)" class="grid gap-4 rounded-2xl border bg-white p-5 md:grid-cols-2">
+          <label class="text-xs font-semibold text-slate-600">Hội viên<select id="scheduleMember" required class="mt-1 w-full rounded-xl border p-3 text-sm"><option value="">Chọn hội viên</option>${members.map(member => `<option value="${escapeHTML(member.MaHoiVien)}">${escapeHTML(member.HoTen)} · ${escapeHTML(member.SoDienThoai)}</option>`).join('')}</select></label>
+          <label class="text-xs font-semibold text-slate-600">Huấn luyện viên (nếu gói có PT)<select id="scheduleTrainer" class="mt-1 w-full rounded-xl border p-3 text-sm"><option value="">Không chọn PT</option>${trainers.map(trainer => `<option value="${escapeHTML(trainer.MaNV)}">${escapeHTML(trainer.HoTen)}</option>`).join('')}</select></label>
+          <label class="text-xs font-semibold text-slate-600">Ngày tập<input id="scheduleDate" type="date" required class="mt-1 w-full rounded-xl border p-3 text-sm" /></label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="text-xs font-semibold text-slate-600">Bắt đầu<input id="scheduleStart" type="time" required class="mt-1 w-full rounded-xl border p-3 text-sm" /></label>
+            <label class="text-xs font-semibold text-slate-600">Kết thúc<input id="scheduleEnd" type="time" required class="mt-1 w-full rounded-xl border p-3 text-sm" /></label>
+          </div>
+          <button type="submit" class="rounded-xl bg-blue-700 px-5 py-3 text-xs font-bold text-white md:col-span-2">Kiểm tra và lưu lịch</button>
+        </form>
+        <section class="overflow-x-auto rounded-2xl border bg-white">
+          <div class="border-b p-4"><h4 class="font-bold">Lịch đã xếp</h4><p class="mt-1 text-xs text-slate-500">Các buổi được sắp theo ngày và giờ.</p></div>
+          ${sessions.length ? `<table class="w-full text-left text-xs"><thead class="bg-slate-50 text-slate-500"><tr><th class="p-4">Ngày / giờ</th><th class="p-4">Hội viên</th><th class="p-4">PT</th><th class="p-4">Mã đăng ký</th><th class="p-4">Trạng thái</th><th class="p-4">Thao tác</th></tr></thead><tbody class="divide-y">${sessions.map(session => {
+            const member = DB.HoiVien.find(item => item.MaHoiVien === session.MaHoiVien);
+            const trainer = DB.NhanVien_PT.find(item => item.MaNV === session.MaPT);
+            return `<tr><td class="p-4">${escapeHTML(session.NgayTap)}<span class="mt-1 block">${escapeHTML(session.GioBatDau)} - ${escapeHTML(session.GioKetThuc)}</span></td><td class="p-4">${escapeHTML(member ? member.HoTen : session.MaHoiVien)}</td><td class="p-4">${escapeHTML(trainer ? trainer.HoTen : 'Tự tập')}</td><td class="p-4 font-mono">${escapeHTML(session.MaDangKy || '—')}</td><td class="p-4">${escapeHTML(session.TrangThaiBuoiTap)}</td><td class="p-4">${session.TrangThaiBuoiTap === 'DaLich' && session.NgayTap >= formatDate(new Date()) ? `<button onclick="cancelScheduledSession('${escapeHTML(session.MaLich)}')" class="rounded-lg bg-rose-50 px-3 py-2 font-semibold text-rose-700">Hủy lịch</button>` : '—'}</td></tr>`;
+          }).join('')}</tbody></table>` : '<p class="p-5 text-sm text-slate-500">Chưa có lịch tập.</p>'}
+        </section>
+      `;
+    }
+
+    function timeToMinutes(value) {
+      const parts = String(value || '').split(':').map(Number);
+      return parts.length === 2 && parts.every(Number.isFinite) ? parts[0] * 60 + parts[1] : NaN;
+    }
+
+    function isWithinGymHours(start, end) {
+      const startMinutes = timeToMinutes(start);
+      const endMinutes = timeToMinutes(end);
+      const morning = startMinutes >= 300 && endMinutes <= 420;
+      const evening = startMinutes >= 960 && endMinutes <= 1200;
+      return Number.isFinite(startMinutes) && Number.isFinite(endMinutes) &&
+        endMinutes > startMinutes && (morning || evening);
+    }
+
+    function createManagedSession(event) {
+      event.preventDefault();
+      if (!currentUser || !['Admin', 'LeTan'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền xếp lịch tập.', 'error');
+        return;
+      }
+      const memberId = document.getElementById('scheduleMember').value;
+      const trainerId = document.getElementById('scheduleTrainer').value || null;
+      const day = document.getElementById('scheduleDate').value;
+      const start = document.getElementById('scheduleStart').value;
+      const end = document.getElementById('scheduleEnd').value;
+      if (!day || day < formatDate(new Date())) {
+        showToast('Ngày xếp lịch phải từ hôm nay trở đi.', 'error');
+        return;
+      }
+      if (!isWithinGymHours(start, end)) {
+        showToast('Giờ tập phải nằm trọn trong 05:00-07:00 hoặc 16:00-20:00.', 'error');
+        return;
+      }
+      const subscription = DB.DangKyGoi.slice().reverse().find(item =>
+        item.MaHoiVien === memberId && item.TrangThaiDangKy === 'KichHoat' &&
+        item.NgayBatDau <= day && item.NgayHetHan >= day
+      );
+      if (!subscription) {
+        showToast('Hội viên chưa có gói đã thanh toán còn hiệu lực vào ngày này.', 'error');
+        return;
+      }
+      const pkg = DB.GoiTap.find(item => item.MaGoi === subscription.MaGoi);
+      if (!pkg) {
+        showToast('Không tìm thấy gói gắn với đăng ký của hội viên.', 'error');
+        return;
+      }
+      const trainer = trainerId && DB.NhanVien_PT.find(item =>
+        item.MaNV === trainerId && item.TrangThai === 'HoatDong'
+      );
+      if (trainerId && !trainer) {
+        showToast('Huấn luyện viên không tồn tại hoặc đang ngừng hoạt động.', 'error');
+        return;
+      }
+      if (pkg && pkg.CoPT && !trainerId) {
+        showToast('Gói tập này có PT; hãy chọn huấn luyện viên phụ trách.', 'error');
+        return;
+      }
+      if (!pkg.CoPT && trainerId) {
+        showToast('Gói tự tập không thể xếp buổi PT cá nhân.', 'error');
+        return;
+      }
+      if (trainer && subscription.MaPT && subscription.MaPT !== trainer.MaNV) {
+        showToast('PT được chọn không khớp với PT đã phân công cho gói.', 'error');
+        return;
+      }
+      const startMinutes = timeToMinutes(start);
+      const endMinutes = timeToMinutes(end);
+      const hasConflict = DB.LichTap.some(session => {
+        if (session.NgayTap !== day || session.TrangThaiBuoiTap === 'DaHuy') return false;
+        const overlaps = startMinutes < timeToMinutes(session.GioKetThuc) &&
+          timeToMinutes(session.GioBatDau) < endMinutes;
+        return overlaps && (session.MaHoiVien === memberId || (trainer && session.MaPT === trainer.MaNV));
+      });
+      if (hasConflict) {
+        showToast('Khung giờ bị trùng với lịch của hội viên hoặc huấn luyện viên.', 'error');
+        return;
+      }
+      const session = {
+        MaLich: getNextRecordId('LT', DB.LichTap, 'MaLich'),
+        MaDangKy: subscription.MaDangKy,
+        MaHoiVien: memberId,
+        MaPT: trainer ? trainer.MaNV : null,
+        NgayTap: day,
+        GioBatDau: start,
+        GioKetThuc: end,
+        TrangThaiBuoiTap: 'DaLich'
+      };
+      if (pkg.CoPT && !subscription.MaPT) subscription.MaPT = trainer.MaNV;
+      DB.LichTap.push(session);
+      saveDB();
+      showToast('Đã lưu lịch tập hợp lệ.', 'success');
+      renderScheduleManagement(document.getElementById('mainContent'));
+    }
+
+    function cancelScheduledSession(sessionId) {
+      if (!currentUser || !['Admin', 'LeTan'].includes(currentUser.VaiTro)) {
+        showToast('Bạn không có quyền hủy lịch tập.', 'error');
+        return;
+      }
+      const session = DB.LichTap.find(item => item.MaLich === sessionId && item.TrangThaiBuoiTap === 'DaLich');
+      if (!session || session.NgayTap < formatDate(new Date())) {
+        showToast('Không thể hủy buổi tập này.', 'error');
+        return;
+      }
+      session.TrangThaiBuoiTap = 'DaHuy';
+      saveDB();
+      showToast('Đã hủy buổi tập; khung giờ được giải phóng.', 'info');
+      renderScheduleManagement(document.getElementById('mainContent'));
+    }
+
+    // Danh sách hội viên cho vai trò quản lý; trạng thái hợp đồng được tính theo ngày hiện tại.
     function renderAdminMembers(el) {
       document.getElementById('pageTitle').textContent = 'Quản Lý Hội Viên';
       const today = formatDate(new Date());
@@ -1251,7 +2441,8 @@
           subscription,
           pkg,
           trainer,
-          active: Boolean(subscription && subscription.NgayHetHan >= today)
+          active: Boolean(subscription && subscription.TrangThaiDangKy === 'KichHoat' &&
+            subscription.NgayBatDau <= today && subscription.NgayHetHan >= today)
         };
       });
       const activeCount = members.filter(item => item.active).length;
@@ -1306,11 +2497,13 @@
       `;
     }
 
+    // Mã hóa ký tự đặc biệt trước khi đưa dữ liệu người dùng vào chuỗi HTML.
     function escapeHTML(value) {
       const entities = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
       return String(value == null ? '' : value).replace(/[&<>"']/g, character => entities[character]);
     }
 
+    // UC13: Quản lý nhân sự PT, thống kê phân công và tạo/kích hoạt/ngừng tài khoản PT.
     function renderAdminPTs(el) {
       document.getElementById('pageTitle').textContent = 'Quản Lý Huấn Luyện Viên';
       const today = formatDate(new Date());
@@ -1320,7 +2513,9 @@
         const activeMembers = DB.HoiVien.filter(member => {
           const subscription = getLatestSubscription(member.MaHoiVien);
           const assignedTrainer = getSubscriptionTrainer(subscription);
-          return subscription && subscription.NgayHetHan >= today && assignedTrainer && assignedTrainer.MaNV === trainer.MaNV;
+          return subscription && subscription.TrangThaiDangKy === 'KichHoat' &&
+            subscription.NgayBatDau <= today && subscription.NgayHetHan >= today &&
+            assignedTrainer && assignedTrainer.MaNV === trainer.MaNV;
         }).length;
         return { trainer, account, activeMembers };
       });
@@ -1382,6 +2577,7 @@
       `;
     }
 
+    // Tìm mã PT số lớn nhất đang có rồi tăng một để hạn chế trùng mã hồ sơ/tài khoản.
     function getNextPTId() {
       const knownIds = DB.NhanVien_PT.map(trainer => trainer.MaNV)
         .concat(DB.NguoiDung.map(account => account.MaND));
@@ -1392,10 +2588,11 @@
       return 'PT' + String(highestId + 1).padStart(2, '0');
     }
 
+    // Chỉ Admin được thêm PT; kiểm tra dữ liệu trùng/thiếu rồi tạo hồ sơ và tài khoản đồng mã.
     function handleAddPT(event) {
       event.preventDefault();
-      if (!currentUser || currentUser.VaiTro !== 'Admin') {
-        showToast('Chỉ quản trị viên mới có thể thêm huấn luyện viên.', 'error');
+      if (!currentUser || !['Admin', 'QuanLy'].includes(currentUser.VaiTro)) {
+        showToast('Chỉ quản trị viên hoặc quản lý mới có thể thêm huấn luyện viên.', 'error');
         return;
       }
 
@@ -1431,9 +2628,10 @@
       renderAdminPTs(document.getElementById('mainContent'));
     }
 
+    // Đổi trạng thái cả hồ sơ PT và tài khoản tương ứng để khóa/mở đăng nhập đồng bộ.
     function togglePTStatus(trainerId) {
-      if (!currentUser || currentUser.VaiTro !== 'Admin') {
-        showToast('Chỉ quản trị viên mới có thể thay đổi trạng thái PT.', 'error');
+      if (!currentUser || !['Admin', 'QuanLy'].includes(currentUser.VaiTro)) {
+        showToast('Chỉ quản trị viên hoặc quản lý mới có thể thay đổi trạng thái PT.', 'error');
         return;
       }
       const trainer = DB.NhanVien_PT.find(item => item.MaNV === trainerId);
@@ -1451,6 +2649,8 @@
       renderAdminPTs(document.getElementById('mainContent'));
     }
 
+    // UC15: Khu vực PT chỉ liệt kê hội viên có gói PT gắn với PT đăng nhập,
+    // kèm các buổi sắp tới và trạng thái kế hoạch tập/dinh dưỡng.
     function renderPTMembers(el) {
       document.getElementById('pageTitle').textContent = 'Trung Tâm Huấn Luyện';
       const today = formatDate(new Date());
@@ -1461,9 +2661,13 @@
           ? { member, subscription, trainer }
           : null;
       }).filter(Boolean);
-      const activeMembers = assignedMembers.filter(item => item.subscription.NgayHetHan >= today);
+      const activeMembers = assignedMembers.filter(item =>
+        item.subscription.TrangThaiDangKy === 'KichHoat' &&
+        item.subscription.NgayBatDau <= today && item.subscription.NgayHetHan >= today
+      );
       const upcomingSessions = DB.LichTap.filter(session =>
-        session.MaPT === currentUser.MaND && session.NgayTap >= today
+        session.MaPT === currentUser.MaND && session.NgayTap >= today &&
+        session.TrangThaiBuoiTap !== 'DaHuy'
       ).sort((a, b) => String(a.NgayTap).localeCompare(String(b.NgayTap)));
       const plannedMembers = assignedMembers.filter(({ member, subscription }) =>
         DB.PT_Plans.some(plan =>
@@ -1487,23 +2691,12 @@
         </section>
         <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <div class="mb-4 flex items-center justify-between gap-3">
-            <div><h3 class="font-bold text-slate-900">Lịch hướng dẫn sắp tới</h3><p class="mt-1 text-xs text-slate-500">Tối đa 5 buổi gần nhất được hiển thị.</p></div>
+            <div><h3 class="font-bold text-slate-900">Thời khóa biểu hướng dẫn theo tuần</h3><p class="mt-1 text-xs text-slate-500">Xem lịch PT và tên hội viên theo từng khung giờ.</p></div>
             <i class="fa-solid fa-calendar-days text-blue-600"></i>
           </div>
-          ${upcomingSessions.length ? `
-            <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-              ${upcomingSessions.slice(0, 5).map(session => {
-                const member = DB.HoiVien.find(item => item.MaHoiVien === session.MaHoiVien);
-                return `
-                  <article class="rounded-xl border border-blue-100 bg-blue-50/60 p-4">
-                    <p class="text-[10px] font-bold uppercase tracking-wider text-blue-700">${new Date(`${session.NgayTap}T00:00:00`).toLocaleDateString('vi-VN')}</p>
-                    <p class="mt-2 truncate text-sm font-bold text-slate-900">${member ? member.HoTen : 'Hội viên'}</p>
-                    <p class="mt-1 text-xs text-slate-600">${session.GioBatDau} – ${session.GioKetThuc}</p>
-                  </article>
-                `;
-              }).join('')}
-            </div>
-          ` : '<p class="rounded-xl bg-slate-50 p-4 text-xs text-slate-500">Chưa có buổi hướng dẫn nào trong lịch.</p>'}
+          ${upcomingSessions.length
+            ? renderMemberWeeklySchedule(upcomingSessions, true)
+            : '<p class="rounded-xl bg-slate-50 p-4 text-xs text-slate-500">Chưa có buổi hướng dẫn nào trong lịch.</p>'}
         </section>
         <section class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
           <div class="flex flex-col justify-between gap-2 border-b border-slate-100 px-5 py-4 sm:flex-row sm:items-center">
@@ -1545,6 +2738,7 @@
       `;
     }
 
+    // Mở form kế hoạch sau khi xác nhận hội viên đang được phân cho PT hiện tại.
     function openPTPlanModal(maHV) {
       const subscription = getLatestSubscription(maHV);
       const trainer = getSubscriptionTrainer(subscription);
@@ -1560,6 +2754,7 @@
       openModal('ptPlanModal');
     }
 
+    // Lưu mới hoặc cập nhật giáo án/dinh dưỡng, gắn với hội viên, PT và đăng ký hiện hành.
     function submitPTPlan() {
       const maHV = document.getElementById('planMemberId').value;
       const workout = document.getElementById('planWorkout').value.trim();
@@ -1593,21 +2788,24 @@
       renderPTMembers(document.getElementById('mainContent'));
     }
 
+    // UC15-16: Hội viên xem gói cá nhân và lịch tuần, đồng thời xem PT/kế hoạch tập và dinh dưỡng.
     function renderMemberPortal(el) {
       document.getElementById('pageTitle').textContent = 'Cổng Thông Tin Hội Viên';
-      const mySub = getLatestSubscription(currentUser.MaND);
+      const mySub = getCurrentOrNextSubscription(currentUser.MaND);
       const pkg = mySub ? DB.GoiTap.find(g => g.MaGoi === mySub.MaGoi) : null;
       ensureScheduleForSubscription(mySub);
       const trainer = getSubscriptionTrainer(mySub);
       const mySchedule = mySub ? DB.LichTap.filter(l =>
-        l.MaDangKy === mySub.MaDangKy || (!l.MaDangKy && l.MaHoiVien === currentUser.MaND)
+        (l.MaDangKy === mySub.MaDangKy || (!l.MaDangKy && l.MaHoiVien === currentUser.MaND)) &&
+        l.TrangThaiBuoiTap !== 'DaHuy'
       ).sort((a, b) => String(a.NgayTap).localeCompare(String(b.NgayTap))) : [];
       const plan = trainer ? DB.PT_Plans.find(p =>
         p.MaHoiVien === currentUser.MaND &&
         (!p.MaPT || p.MaPT === trainer.MaNV) &&
         (!p.MaDangKy || p.MaDangKy === mySub.MaDangKy)
       ) : null;
-      const subscriptionActive = mySub && mySub.NgayHetHan >= formatDate(new Date());
+      const subscriptionActive = mySub && mySub.TrangThaiDangKy === 'KichHoat' &&
+        mySub.NgayBatDau <= formatDate(new Date()) && mySub.NgayHetHan >= formatDate(new Date());
       const availablePackages = DB.GoiTap.filter(g => g.TrangThai === 'DangCungCap');
       const today = formatDate(new Date());
       const nextSession = mySchedule.find(session => session.NgayTap >= today);
@@ -1680,15 +2878,9 @@
 
           <div class="bg-white p-6 rounded-2xl border shadow-sm space-y-3">
             <h3 class="font-bold text-sm text-emerald-700"><i class="fa-solid fa-calendar-days mr-1"></i> Lịch tập cá nhân</h3>
-            ${mySchedule.length > 0 ? mySchedule.map(s => `
-              <div class="text-xs p-3 bg-slate-50 rounded-xl border flex items-center justify-between gap-3">
-                <div>
-                  <p><b>Ngày tập:</b> ${new Date(`${s.NgayTap}T00:00:00`).toLocaleDateString('vi-VN')} (${s.GioBatDau} - ${s.GioKetThuc})</p>
-                  ${trainer ? `<p class="text-emerald-700 font-semibold mt-1"><i class="fa-solid fa-user-check mr-1"></i> PT phụ trách: ${trainer.HoTen}</p>` : ''}
-                </div>
-                <span class="px-2.5 py-1 bg-blue-100 text-blue-700 font-bold rounded-lg">${s.TrangThaiBuoiTap}</span>
-              </div>
-            `).join('') : '<p class="text-xs text-slate-500">Lịch tập sẽ được tạo sau khi bạn hoàn tất đăng ký và thanh toán gói tập.</p>'}
+            ${mySchedule.length
+              ? renderMemberWeeklySchedule(mySchedule)
+              : '<p class="text-xs text-slate-500">Lịch tập sẽ được tạo sau khi bạn hoàn tất đăng ký và thanh toán gói tập.</p>'}
           </div>
 
           <div class="bg-white p-6 rounded-2xl border shadow-sm space-y-3">
@@ -1710,6 +2902,7 @@
       `;
     }
 
+    // Trang hướng dẫn tập luyện và dinh dưỡng cơ bản; nội dung chỉ mang tính tham khảo.
     function renderMemberKnowledge(el) {
       document.getElementById('pageTitle').textContent = 'Kiến Thức Tập Luyện';
       el.innerHTML = `
@@ -1793,6 +2986,7 @@
       `;
     }
 
+    // UC03: Dựng biểu mẫu đổi mật khẩu; dùng chung cho hội viên và huấn luyện viên.
     function renderMemberPassword(el) {
       document.getElementById('pageTitle').textContent = 'Đổi Mật Khẩu';
       el.innerHTML = `
@@ -1819,6 +3013,7 @@
       `;
     }
 
+    // Xác thực mật khẩu hiện tại, độ dài và xác nhận mật khẩu mới rồi lưu thay đổi.
     function handlePasswordChange(event) {
       event.preventDefault();
       if (!currentUser || !['HoiVien', 'PT'].includes(currentUser.VaiTro)) {
