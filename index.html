@@ -702,7 +702,7 @@
       const subscription = DB.DangKyGoi.find(item => item.MaDangKy === session.MaDangKy) ||
         getLatestSubscription(session.MaHoiVien);
       if (!subscription) return;
-      const time = getTrainingTime(subscription, new Date(`${session.NgayTap}T00:00:00`));
+      const time = getTrainingTime(subscription, new Date(`${session.NgayTap}T00:00:00`), [], session.MaLich);
       if (!time) return;
       session.GioBatDau = time.start;
       session.GioKetThuc = time.end;
@@ -795,10 +795,12 @@
       );
       return previousTrainer || getLeastAssignedTrainer();
     }
-    // Chọn giờ cố định theo ngày: Thứ 2 buổi sáng, Thứ 4 chiều, Thứ 6 tối.
-    // Hội viên cùng PT được chia luân phiên giờ khác nhau để tránh trùng buổi 1-1.
-    function getTrainingTime(subscription, date) {
+    // Ưu tiên giờ theo ngày; nếu hội viên hoặc PT đã bận thì thử khung giờ kế tiếp còn trống.
+    // Buổi PT kéo dài 90 phút; buổi tự tập kéo dài 60 phút.
+    function getTrainingTime(subscription, date, additionalSessions = [], ignoredSessionId = null) {
       const trainer = getSubscriptionTrainer(subscription);
+      let candidateSlots;
+      let preferredIndex = 0;
       if (trainer) {
         const startDate = subscription.NgayBatDau || '';
         const endDate = subscription.NgayHetHan || '';
@@ -811,20 +813,43 @@
         const memberIndex = Math.max(0, trainerSubscriptions.findIndex(item =>
           item.MaDangKy === subscription.MaDangKy
         ));
-        const trainerSlots = [
+        candidateSlots = [
           { start: '05:00', end: '06:30' },
           { start: '16:00', end: '17:30' },
           { start: '18:00', end: '19:30' }
         ];
-        return trainerSlots[memberIndex % trainerSlots.length];
+        preferredIndex = memberIndex % candidateSlots.length;
+      } else {
+        candidateSlots = [
+          { start: '05:00', end: '06:00' },
+          { start: '06:00', end: '07:00' },
+          { start: '16:00', end: '17:00' },
+          { start: '17:00', end: '18:00' },
+          { start: '18:00', end: '19:00' },
+          { start: '19:00', end: '20:00' }
+        ];
+        preferredIndex = { 1: 0, 3: 2, 5: 4 }[date.getDay()];
       }
 
-      const selfTrainingSlots = {
-        1: { start: '05:00', end: '06:00' },
-        3: { start: '16:00', end: '17:00' },
-        5: { start: '18:00', end: '19:00' }
-      };
-      return selfTrainingSlots[date.getDay()] || null;
+      if (preferredIndex === undefined) return null;
+      const dateString = formatDate(date);
+      const occupiedSessions = DB.LichTap.concat(additionalSessions);
+      for (let offset = 0; offset < candidateSlots.length; offset += 1) {
+        const slot = candidateSlots[(preferredIndex + offset) % candidateSlots.length];
+        const start = timeToMinutes(slot.start);
+        const end = timeToMinutes(slot.end);
+        const conflict = occupiedSessions.some(session => {
+          if (session.MaLich === ignoredSessionId || session.NgayTap !== dateString ||
+              session.TrangThaiBuoiTap === 'DaHuy') return false;
+          const sameMember = session.MaHoiVien === subscription.MaHoiVien;
+          const sameTrainer = trainer && session.MaPT === trainer.MaNV;
+          return (sameMember || sameTrainer) &&
+            start < timeToMinutes(session.GioKetThuc) &&
+            timeToMinutes(session.GioBatDau) < end;
+        });
+        if (!conflict) return slot;
+      }
+      return null;
     }
 
     // Tạo ba buổi mỗi tuần (Thứ 2, 4, 6), nghỉ xen kẽ; lấy giờ và thời lượng từ gói.
@@ -834,10 +859,12 @@
       const end = new Date(`${subscription.NgayHetHan}T23:59:59`);
       const trainingDays = new Set([1, 3, 5]);
       const schedule = [];
+      let expectedSessions = 0;
 
       for (const date = new Date(start); date <= end; date.setDate(date.getDate() + 1)) {
         if (!trainingDays.has(date.getDay())) continue;
-        const time = getTrainingTime(subscription, date);
+        expectedSessions += 1;
+        const time = getTrainingTime(subscription, date, schedule);
         if (!time) continue;
         schedule.push({
           MaLich: 'LT' + String(DB.LichTap.length + schedule.length + 1).padStart(3, '0'),
@@ -853,6 +880,7 @@
       }
 
       DB.LichTap.push(...schedule);
+      return { created: schedule.length, expected: expectedSessions };
     }
     // Lịch demo chỉ giữ/tạo tối đa 12 buổi sắp tới, tránh làm dữ liệu mẫu quá dài.
     function ensureDemoScheduleForSubscription(subscription) {
@@ -1295,10 +1323,17 @@
       };
       DB.GiaoDichThanhToan.push(payment);
       DB.PhieuThu.push(receipt);
-      createScheduleForSubscription(pendingRegistration);
+      const scheduleResult = createScheduleForSubscription(pendingRegistration);
 
       saveDB();
-      showToast('Đã ghi nhận thanh toán, kích hoạt gói và tạo lịch tập.', 'success');
+      if (scheduleResult.created === scheduleResult.expected) {
+        showToast('Đã ghi nhận thanh toán, kích hoạt gói và tạo lịch tập.', 'success');
+      } else {
+        showToast(
+          `Đã kích hoạt gói nhưng chỉ xếp được ${scheduleResult.created}/${scheduleResult.expected} buổi vì không còn giờ trống. Vui lòng xếp bổ sung thủ công.`,
+          'error'
+        );
+      }
       pendingPkg = null;
       pendingRegistration = null;
       closeModal('qrModal');
@@ -3049,6 +3084,27 @@
       event.target.reset();
       showToast('Đổi mật khẩu thành công.', 'success');
     }
+
+    async function syncDatabaseFromSQL() {
+      try {
+        const res = await fetch('http://localhost:3000/api/gym-data');
+        if (!res.ok) throw new Error('API trả về lỗi ' + res.status);
+        const sqlData = await res.json();
+
+        Object.assign(DB, sqlData);
+        renderPublicPackages();
+
+        const activeTab = document.querySelector('.nav-btn.bg-blue-600')?.dataset.tab;
+        if (currentUser && activeTab) renderTab(activeTab);
+        showToast('Đã đồng bộ dữ liệu từ SQL Server', 'success');
+      } catch (err) {
+        console.warn('Chưa kết nối được SQL API, dùng dữ liệu tạm:', err);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      syncDatabaseFromSQL();
+    });
   </script>
 </body>
 </html>
